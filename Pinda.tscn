@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://gwlb8a5aype3"]
+
+[ext_resource type="Script" path="res://Pinda.gd" id="1_7oqiy"]
+[ext_resource type="Texture2D" uid="uid://bu1v6mguw354a" path="res://maple_seed.png" id="1_8t2np"]
+[ext_resource type="Shader" path="res://pixelate_test.gdshader" id="1_cj4w0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57mjh"]
+size = Vector2(115.543, 27.5325)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4rlh6"]
+shader = ExtResource("1_cj4w0")
+shader_parameter/pixelSize = 12
+
+[node name="Pinda" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_7oqiy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_57mjh")
+
+[node name="MapleSeed" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_4rlh6")
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_8t2np")
