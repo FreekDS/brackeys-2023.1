@@ -1,19 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://bnvg881xauodp"]
+[gd_scene load_steps=6 format=3 uid="uid://cklrq567t1llk"]
 
-[ext_resource type="Script" path="res://Player/Pinda.gd" id="1_uvjhs"]
-[ext_resource type="Shader" path="res://pixelate_test.gdshader" id="2_3ng4h"]
-[ext_resource type="Texture2D" uid="uid://bu1v6mguw354a" path="res://Player/maple_seed.png" id="3_s2qm7"]
+[ext_resource type="Script" path="res://InteractingObjects/Player/pinda.gd" id="1_6rpsv"]
+[ext_resource type="Shader" path="res://pixelate_test.gdshader" id="2_ve6s3"]
+[ext_resource type="Texture2D" uid="uid://bu1v6mguw354a" path="res://InteractingObjects/Player/maple_seed.png" id="3_cmqg3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57mjh"]
 size = Vector2(115.543, 27.5325)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4rlh6"]
-shader = ExtResource("2_3ng4h")
+shader = ExtResource("2_ve6s3")
 shader_parameter/pixelSize = 12
 
 [node name="Pinda" type="CharacterBody2D"]
 motion_mode = 1
-script = ExtResource("1_uvjhs")
+script = ExtResource("1_6rpsv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -3.14159
@@ -22,4 +22,4 @@ shape = SubResource("RectangleShape2D_57mjh")
 [node name="MapleSeed" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_4rlh6")
 scale = Vector2(0.15, 0.15)
-texture = ExtResource("3_s2qm7")
+texture = ExtResource("3_cmqg3")

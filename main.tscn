@@ -1,11 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://jxsqbckvsqqb"]
+[gd_scene load_steps=7 format=3 uid="uid://bdmoo4x1vg0ge"]
 
-[ext_resource type="Script" path="res://Scrolling.gd" id="1_35sgt"]
 [ext_resource type="Script" path="res://main.gd" id="1_gpong"]
-[ext_resource type="PackedScene" uid="uid://dj2ahre12ceg8" path="res://Objects/Tree/Tree.tscn" id="1_k0wo1"]
-[ext_resource type="PackedScene" uid="uid://bnvg881xauodp" path="res://Player/Pinda.tscn" id="2_75c1x"]
+[ext_resource type="PackedScene" uid="uid://wadygrpuiqj6" path="res://BackgroundObjects/Tree/Tree.tscn" id="1_k0wo1"]
+[ext_resource type="PackedScene" uid="uid://cklrq567t1llk" path="res://InteractingObjects/Player/Pinda.tscn" id="2_75c1x"]
 [ext_resource type="Script" path="res://Camera/PlayerCam.gd" id="2_xhvm3"]
-[ext_resource type="PackedScene" uid="uid://da33skjc8gqe4" path="res://Ground.tscn" id="3_srm2c"]
+[ext_resource type="Script" path="res://scrolling.gd" id="3_jqqr0"]
+[ext_resource type="PackedScene" uid="uid://da33skjc8gqe4" path="res://InteractingObjects/Ground/Ground.tscn" id="3_srm2c"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_gpong")
@@ -16,7 +16,7 @@ scale = Vector2(1.00174, 0.420718)
 script = ExtResource("2_xhvm3")
 
 [node name="Scrolling" type="Node2D" parent="."]
-script = ExtResource("1_35sgt")
+script = ExtResource("3_jqqr0")
 
 [node name="achtergrond" type="Node2D" parent="Scrolling"]
 position = Vector2(-1414, -554)
