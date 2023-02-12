@@ -1,31 +1,37 @@
 extends CharacterBody2D
 
+var enabled=true
 
-#const SPEED = 300.0
-#const JUMP_VELOCITY = -400.0
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-#var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-signal ground_hit
-
+var marginx=25
+var marginy=10
 func _physics_process(delta):
-	# Add the gravity.
-	if is_on_floor():
-		emit_signal("ground_hit")
+	if(enabled):
+			
+		# Get the input direction and handle the movement/deceleration.
+		# As good practice, you should replace UI actions with custom gameplay actions.
 		
-#		velocity.y += gravity * delta
-#
-#	# Handle Jump.
-#	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-#		velocity.y = JUMP_VELOCITY
-#
-#	# Get the input direction and handle the movement/deceleration.
-#	# As good practice, you should replace UI actions with custom gameplay actions.
-#	var direction = Input.get_axis("ui_left", "ui_right")
-#	if direction:
-#		velocity.x = direction * SPEED
-#	else:
-#		velocity.x = move_toward(velocity.x, 0, SPEED)
-#
-#	move_and_slide()
-
+		var pos=self.get_global_transform_with_canvas().origin
+		var mousePos=get_viewport().get_mouse_position()
+		velocity = pos.direction_to(mousePos) * 300
+		
+		var diff=abs(pos-mousePos)
+		if(diff.x<10):
+			velocity.x=0	
+		if(diff.y<10):
+			velocity.y=0	
+			
+		var max=get_viewport().get_visible_rect().size
+		if (pos.x>(max.x-marginx)) and velocity.x>0:
+			velocity.x=0
+		if pos.x<marginx and velocity.x<0:
+			velocity.x=0
+		if (pos.y>(max.y-marginy)) and velocity.y>0:
+			velocity.y=0
+		if pos.y<marginy and velocity.y<0:
+			velocity.y=0
+		
+		move_and_slide()
+		
+func stopGame():
+	velocity=Vector2(0,0)
+	enabled=false
