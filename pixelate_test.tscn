@@ -1,17 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwpb54pr3gs6u"]
+[gd_scene load_steps=6 format=3 uid="uid://bwpb54pr3gs6u"]
 
 [ext_resource type="Shader" path="res://pixelate_test.gdshader" id="1_2jst0"]
-[ext_resource type="Texture2D" uid="uid://fptkl4burakp" path="res://icon.svg" id="2_2ckod"]
+[ext_resource type="Texture2D" uid="uid://cpk83hqtwlw4g" path="res://Untitled.png" id="2_g2u4l"]
+[ext_resource type="Texture2D" uid="uid://c766boianxebf" path="res://Untitled2.png" id="3_okrud"]
+[ext_resource type="Texture2D" uid="uid://bes8hv1p7ospu" path="res://Untitled3.png" id="4_07g3b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6sk8o"]
 shader = ExtResource("1_2jst0")
-shader_parameter/pixelSize = 6
+shader_parameter/pixelSize = 4
 
 [node name="PixelateTest" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_6sk8o")
 position = Vector2(168, -69)
-texture = ExtResource("2_2ckod")
+texture = ExtResource("2_g2u4l")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_6sk8o")
+position = Vector2(-588, -92)
+texture = ExtResource("3_okrud")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_6sk8o")
+position = Vector2(836, -69)
+texture = ExtResource("4_07g3b")
 
 [node name="Camera2D" type="Camera2D" parent="."]
