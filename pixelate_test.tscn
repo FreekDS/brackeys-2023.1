@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwpb54pr3gs6u"]
+
+[ext_resource type="Shader" path="res://pixelate_test.gdshader" id="1_2jst0"]
+[ext_resource type="Texture2D" uid="uid://fptkl4burakp" path="res://icon.svg" id="2_2ckod"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6sk8o"]
+shader = ExtResource("1_2jst0")
+shader_parameter/pixelSize = 6
+
+[node name="PixelateTest" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_6sk8o")
+position = Vector2(168, -69)
+texture = ExtResource("2_2ckod")
+
+[node name="Camera2D" type="Camera2D" parent="."]
