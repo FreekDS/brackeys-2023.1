@@ -10,6 +10,8 @@ extends CharacterBody2D
 var isFlying = false
 var direction: Vector2 = Vector2.ZERO
 
+signal collide
+
 func _ready():
 	assert(sourcePos != null, "loempen uil")
 	assert(targetPos != null, "loempen uil x2")
@@ -27,7 +29,7 @@ func _physics_process(delta):
 		velocity = direction * speed * delta
 		var collision = move_and_collide(velocity)
 		if collision and collision.get_collider().is_in_group("Player"):
-			print("jammerlijk")
+			emit_signal("collide")
 
 func showKoppeke():
 	# em toont zen koppeke

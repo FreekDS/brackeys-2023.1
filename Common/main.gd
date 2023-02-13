@@ -3,10 +3,11 @@ extends Node2D
 @onready var characterNode=$MapleSeed
 @onready var dedlmaoScreen= $EndScreen/DeadScreen
 @onready var winlmaoScreen= $EndScreen/WinScreen
-@onready var RandomObjectSpawnHandler= load("res://randomObjectSpawnHandler.gd").new()
+@onready var birdSpawner= $BirdSpawner
 #Use seperate timer to handle random objects, as we want this to be based om actual time and not any physics process/framerate
 #Counting the delta would also work, but I prefer this
 var RandomObjectSpawnTimer = null
+var rng = RandomNumberGenerator.new()
 
 #This variable gets modified by the root node in main.tscn
 var difficulty=0
@@ -18,6 +19,7 @@ func _ready():
 	RandomObjectSpawnTimer.set_one_shot(false)
 	add_child(RandomObjectSpawnTimer)
 	RandomObjectSpawnTimer.start(1.0)
+	birdSpawner.connect("collide",lose)
 
 func _on_ground_body_entered(body):
 	if body == characterNode:
@@ -27,8 +29,17 @@ func _on_ground_body_entered(body):
 		winlmaoScreen.play()
 		
 func triggerRandomObjectSpawnTick():
-	print("tick")
-	RandomObjectSpawnHandler.tick()
-
+	rng.randomize()
+	var number= rng.randi_range(1,10)
+	if(number<=difficulty):
+		birdSpawner.vliegVogeltjeVlieg()
+		
+	
 func _on_win_screen_win():
 	emit_signal("win")
+
+func lose():
+	$Scrolling.stopGame()
+	characterNode.stopGame()
+	dedlmaoScreen.visible=true
+	dedlmaoScreen.play()

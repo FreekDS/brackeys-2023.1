@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bsq4t3ftl1072"]
+[gd_scene load_steps=10 format=3 uid="uid://bsq4t3ftl1072"]
 
 [ext_resource type="Script" path="res://Common/main.gd" id="1_7v3cp"]
+[ext_resource type="PackedScene" uid="uid://fd7dcfgy88hs" path="res://InteractingObjects/Bird/BirdSpawner.tscn" id="2_3pf32"]
 [ext_resource type="PackedScene" uid="uid://da0gy62kqyiky" path="res://BackgroundObjects/Clouds/cloud_background.tscn" id="2_hgd1f"]
 [ext_resource type="Script" path="res://Common/scrolling.gd" id="3_m0q01"]
 [ext_resource type="PackedScene" uid="uid://cfg6wwlys75aa" path="res://BackgroundObjects/Tree/Tree.tscn" id="4_hrruo"]
@@ -11,6 +12,8 @@
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_7v3cp")
+
+[node name="BirdSpawner" parent="." instance=ExtResource("2_3pf32")]
 
 [node name="Clouds" parent="." instance=ExtResource("2_hgd1f")]
 
