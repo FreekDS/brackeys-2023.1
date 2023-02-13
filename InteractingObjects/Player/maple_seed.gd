@@ -40,7 +40,7 @@ func _physics_process(delta):
 		
 		move_and_slide()
 		
-		self.rotation_degrees+=delta*1000
+#		self.rotation_degrees+=delta*1000
 		
 func stopGame():
 	velocity = Vector2(0,0)

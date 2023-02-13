@@ -20,6 +20,9 @@ var targetEdge: EDGE
 var sourcePos = Vector2.ZERO
 var targetPos = Vector2.ZERO
 
+# TODO laat zen koppeke nekeer piepen voordat hem afkomt
+# ik zou da met animation tree doen of procedural met code
+# mss is procedural gemakkeijkerek
 
 func _ready():
 	screenOffset.x = ProjectSettings.get("display/window/size/viewport_width") / 2
