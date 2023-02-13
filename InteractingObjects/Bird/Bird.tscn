@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://buajshfctbjsy"]
+[gd_scene load_steps=7 format=3 uid="uid://buajshfctbjsy"]
 
 [ext_resource type="Script" path="res://InteractingObjects/Bird/Bird.gd" id="1_ntirg"]
 [ext_resource type="Texture2D" uid="uid://ce8pw8iltc7fk" path="res://InteractingObjects/Bird/birb_placeholder.png" id="1_rotfn"]
 [ext_resource type="Shader" path="res://Common/pixelate.gdshader" id="2_vsd63"]
+[ext_resource type="AudioStream" uid="uid://lu6s0h0tqwlq" path="res://InteractingObjects/Bird/kahkahaa.wav" id="4_0cbyr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hcg00"]
 size = Vector2(300, 120)
@@ -21,3 +22,6 @@ shape = SubResource("RectangleShape2D_hcg00")
 [node name="BirbPlaceholder" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_bkhc7")
 texture = ExtResource("1_rotfn")
+
+[node name="kahkaa" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_0cbyr")

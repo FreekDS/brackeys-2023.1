@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://bsq4t3ftl1072"]
+
+[ext_resource type="Script" path="res://Common/main.gd" id="1_7v3cp"]
+[ext_resource type="PackedScene" uid="uid://da0gy62kqyiky" path="res://BackgroundObjects/Clouds/cloud_background.tscn" id="2_hgd1f"]
+[ext_resource type="Script" path="res://Common/scrolling.gd" id="3_m0q01"]
+[ext_resource type="PackedScene" uid="uid://cfg6wwlys75aa" path="res://BackgroundObjects/Tree/Tree.tscn" id="4_hrruo"]
+[ext_resource type="PackedScene" uid="uid://da33skjc8gqe4" path="res://InteractingObjects/Ground/Ground.tscn" id="5_03k3g"]
+[ext_resource type="PackedScene" uid="uid://n17n1ruijcor" path="res://InteractingObjects/Player/MapleSeed.tscn" id="6_f7r1k"]
+[ext_resource type="PackedScene" uid="uid://bpqs5c8pkymdr" path="res://UI/dead_screen.tscn" id="7_ydsya"]
+[ext_resource type="PackedScene" uid="uid://d23u4v2hvdw2k" path="res://UI/win_screen.tscn" id="8_iw22v"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_7v3cp")
+
+[node name="Clouds" parent="." instance=ExtResource("2_hgd1f")]
+
+[node name="PlayerCam" type="Camera2D" parent="."]
+scale = Vector2(1.3526, 1.43822)
+
+[node name="Scrolling" type="Node2D" parent="."]
+script = ExtResource("3_m0q01")
+
+[node name="NonCollsionObjects" type="Node2D" parent="Scrolling"]
+
+[node name="Tree" parent="Scrolling/NonCollsionObjects" instance=ExtResource("4_hrruo")]
+position = Vector2(0, 300)
+
+[node name="Ground" parent="Scrolling" instance=ExtResource("5_03k3g")]
+position = Vector2(-156, 622)
+
+[node name="MapleSeed" parent="." instance=ExtResource("6_f7r1k")]
+
+[node name="EndScreen" type="CanvasLayer" parent="."]
+
+[node name="DeadScreen" parent="EndScreen" instance=ExtResource("7_ydsya")]
+visible = false
+scale = Vector2(1.01596, 1.02512)
+
+[node name="WinScreen" parent="EndScreen" instance=ExtResource("8_iw22v")]
+visible = false
+offset_left = -1.0
+offset_top = -2.0
+offset_right = 15.0
+offset_bottom = 20.0
+
+[connection signal="body_entered" from="Scrolling/Ground" to="." method="_on_ground_body_entered"]
+[connection signal="win" from="EndScreen/WinScreen" to="." method="_on_win_screen_win"]
