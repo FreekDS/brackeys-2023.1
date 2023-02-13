@@ -17,6 +17,7 @@ script = ExtResource("1_piix6")
 
 [node name="Scrolling" type="Node2D" parent="."]
 script = ExtResource("3_m62wc")
+speed = 10
 
 [node name="NonCollsionObjects" type="Node2D" parent="Scrolling"]
 
