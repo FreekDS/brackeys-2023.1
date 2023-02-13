@@ -1,46 +1,32 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdmoo4x1vg0ge"]
+[gd_scene load_steps=7 format=3 uid="uid://bdjcibipcey38"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_gpong"]
-[ext_resource type="PackedScene" uid="uid://wadygrpuiqj6" path="res://BackgroundObjects/Tree/Tree.tscn" id="1_k0wo1"]
-[ext_resource type="PackedScene" uid="uid://cklrq567t1llk" path="res://InteractingObjects/Player/Pinda.tscn" id="2_75c1x"]
-[ext_resource type="Script" path="res://Camera/PlayerCam.gd" id="2_xhvm3"]
-[ext_resource type="Script" path="res://scrolling.gd" id="3_jqqr0"]
+[ext_resource type="PackedScene" uid="uid://cfg6wwlys75aa" path="res://BackgroundObjects/Tree/Tree.tscn" id="1_k0wo1"]
+[ext_resource type="Script" path="res://Common/main.gd" id="1_piix6"]
+[ext_resource type="PackedScene" uid="uid://n17n1ruijcor" path="res://InteractingObjects/Player/MapleSeed.tscn" id="2_75c1x"]
+[ext_resource type="PackedScene" uid="uid://da0gy62kqyiky" path="res://BackgroundObjects/Clouds/cloud_background.tscn" id="2_g6ee2"]
+[ext_resource type="Script" path="res://Common/scrolling.gd" id="3_m62wc"]
 [ext_resource type="PackedScene" uid="uid://da33skjc8gqe4" path="res://InteractingObjects/Ground/Ground.tscn" id="3_srm2c"]
 
-[node name="Node2D" type="Node2D"]
-script = ExtResource("1_gpong")
+[node name="ROOT" type="Node2D"]
+script = ExtResource("1_piix6")
+
+[node name="Clouds" parent="." instance=ExtResource("2_g6ee2")]
 
 [node name="PlayerCam" type="Camera2D" parent="."]
-position = Vector2(1112, -1278)
-scale = Vector2(1.00174, 0.420718)
-script = ExtResource("2_xhvm3")
 
 [node name="Scrolling" type="Node2D" parent="."]
-script = ExtResource("3_jqqr0")
-
-[node name="achtergrond" type="Node2D" parent="Scrolling"]
-position = Vector2(-1414, -554)
-scale = Vector2(3.97455, 3.16207)
-
-[node name="ColorRect" type="ColorRect" parent="Scrolling/achtergrond"]
-offset_left = 363.564
-offset_top = -757.415
-offset_right = 412.564
-offset_bottom = -688.415
-scale = Vector2(28.9352, 16.493)
-color = Color(0, 0.701961, 1, 1)
-
-[node name="Ground" parent="Scrolling" instance=ExtResource("3_srm2c")]
-position = Vector2(560, 629)
-scale = Vector2(10.7567, 4.21947)
+script = ExtResource("3_m62wc")
+speed = 50
 
 [node name="NonCollsionObjects" type="Node2D" parent="Scrolling"]
 
 [node name="Tree" parent="Scrolling/NonCollsionObjects" instance=ExtResource("1_k0wo1")]
-position = Vector2(38, 594)
-scale = Vector2(-300, 254.901)
+position = Vector2(0, 300)
 
-[node name="Pinda" parent="." instance=ExtResource("2_75c1x")]
-position = Vector2(1140, -1298)
+[node name="Ground" parent="Scrolling" instance=ExtResource("3_srm2c")]
+position = Vector2(-156, 622)
+
+[node name="MapleSeed" parent="." instance=ExtResource("2_75c1x")]
+position = Vector2(285, 227)
 
 [connection signal="body_entered" from="Scrolling/Ground" to="." method="_on_ground_body_entered"]
