@@ -14,6 +14,7 @@ script = ExtResource("1_piix6")
 [node name="Clouds" parent="." instance=ExtResource("2_g6ee2")]
 
 [node name="PlayerCam" type="Camera2D" parent="."]
+scale = Vector2(1.3526, 1.43822)
 
 [node name="Scrolling" type="Node2D" parent="."]
 script = ExtResource("3_m62wc")
@@ -29,8 +30,10 @@ position = Vector2(-156, 622)
 
 [node name="MapleSeed" parent="." instance=ExtResource("2_75c1x")]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="DeasScreenPapa" type="CanvasLayer" parent="."]
 
-[node name="DeadScreen" parent="CanvasLayer" instance=ExtResource("3_cewg1")]
+[node name="DeadScreen" parent="DeasScreenPapa" instance=ExtResource("3_cewg1")]
+visible = false
+scale = Vector2(1.01596, 1.02512)
 
 [connection signal="body_entered" from="Scrolling/Ground" to="." method="_on_ground_body_entered"]

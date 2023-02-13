@@ -1,11 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpqs5c8pkymdr"]
+[gd_scene load_steps=12 format=3 uid="uid://bpqs5c8pkymdr"]
 
 [ext_resource type="Script" path="res://UI/dead_screen.gd" id="1_j1mwc"]
 [ext_resource type="Texture2D" uid="uid://deux0xyp5y054" path="res://UI/dead lmao.jpg" id="1_ufnk0"]
 [ext_resource type="AudioStream" uid="uid://cdc230nkswpiw" path="res://UI/dedlmao.mp3" id="3_75tpx"]
+[ext_resource type="Texture2D" uid="uid://dxopbjd0ltrwb" path="res://UI/Button/Button.png" id="4_1rui0"]
+[ext_resource type="Texture2D" uid="uid://25p4lwvqpybu" path="res://UI/Button/PlayButton.png" id="4_3q46j"]
+[ext_resource type="Texture2D" uid="uid://cangrqkubxjdn" path="res://UI/Button/ButtonHover.png" id="4_715rl"]
+[ext_resource type="Texture2D" uid="uid://cmapbgyggvw6a" path="res://UI/Button/ButtonPressed.png" id="6_7rsr6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jqrmb"]
+texture = ExtResource("4_715rl")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_snrka"]
+texture = ExtResource("4_1rui0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1os1k"]
+texture = ExtResource("6_7rsr6")
+
+[sub_resource type="Theme" id="Theme_g3dxo"]
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = SubResource("StyleBoxTexture_jqrmb")
+Button/styles/normal = SubResource("StyleBoxTexture_snrka")
+Button/styles/pressed = SubResource("StyleBoxTexture_1os1k")
 
 [node name="DeadScreen" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,3 +59,20 @@ texture = ExtResource("1_ufnk0")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_75tpx")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+anchor_left = 0.501
+anchor_top = 0.856
+anchor_right = 0.501
+anchor_bottom = 0.856
+offset_left = -210.152
+offset_top = -23.688
+offset_right = 210.848
+offset_bottom = 23.312
+theme = SubResource("Theme_g3dxo")
+text = "Groeit nog nen boom"
+icon = ExtResource("4_3q46j")
+expand_icon = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
