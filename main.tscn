@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdjcibipcey38"]
+[gd_scene load_steps=8 format=3 uid="uid://bdjcibipcey38"]
 
 [ext_resource type="PackedScene" uid="uid://cfg6wwlys75aa" path="res://BackgroundObjects/Tree/Tree.tscn" id="1_k0wo1"]
 [ext_resource type="Script" path="res://Common/main.gd" id="1_piix6"]
 [ext_resource type="PackedScene" uid="uid://n17n1ruijcor" path="res://InteractingObjects/Player/MapleSeed.tscn" id="2_75c1x"]
 [ext_resource type="PackedScene" uid="uid://da0gy62kqyiky" path="res://BackgroundObjects/Clouds/cloud_background.tscn" id="2_g6ee2"]
+[ext_resource type="PackedScene" uid="uid://bpqs5c8pkymdr" path="res://UI/dead_screen.tscn" id="3_cewg1"]
 [ext_resource type="Script" path="res://Common/scrolling.gd" id="3_m62wc"]
 [ext_resource type="PackedScene" uid="uid://da33skjc8gqe4" path="res://InteractingObjects/Ground/Ground.tscn" id="3_srm2c"]
 
@@ -28,5 +29,9 @@ position = Vector2(-156, 622)
 
 [node name="MapleSeed" parent="." instance=ExtResource("2_75c1x")]
 position = Vector2(285, 227)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DeadScreen" parent="CanvasLayer" instance=ExtResource("3_cewg1")]
 
 [connection signal="body_entered" from="Scrolling/Ground" to="." method="_on_ground_body_entered"]

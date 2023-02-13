@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var characterNode=$MapleSeed
+@onready var dedlmaoScreen = $CanvasLayer/DeadScreen
 @onready var RandomObjectSpawnHandler= load("res://randomObjectSpawnHandler.gd").new()
 #Use seperate timer to handle random objects, as we want this to be based om actual time and not any physics process/framerate
 #Counting the delta would also work, but I prefer this
@@ -18,6 +19,8 @@ func _on_ground_body_entered(body):
 	if body == characterNode:
 		$Scrolling.stopGame()
 		characterNode.stopGame()
+		dedlmaoScreen.play()
+		
 func triggerRandomObjectSpawnTick():
 	print("tick")
 	RandomObjectSpawnHandler.tick()
