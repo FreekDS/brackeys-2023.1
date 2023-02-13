@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://buajshfctbjsy"]
+
+[ext_resource type="Script" path="res://InteractingObjects/Bird/Bird.gd" id="1_ntirg"]
+[ext_resource type="Texture2D" uid="uid://ce8pw8iltc7fk" path="res://InteractingObjects/Bird/birb_placeholder.png" id="1_rotfn"]
+[ext_resource type="Shader" path="res://Common/pixelate.gdshader" id="2_vsd63"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hcg00"]
+size = Vector2(300, 120)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bkhc7"]
+shader = ExtResource("2_vsd63")
+shader_parameter/pixelSize = 8
+
+[node name="Bird" type="CharacterBody2D"]
+script = ExtResource("1_ntirg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 14.5)
+shape = SubResource("RectangleShape2D_hcg00")
+
+[node name="BirbPlaceholder" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_bkhc7")
+texture = ExtResource("1_rotfn")

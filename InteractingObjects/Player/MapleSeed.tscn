@@ -23,5 +23,5 @@ shape = SubResource("RectangleShape2D_57mjh")
 [node name="MapleSeed" type="Sprite2D" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_4rlh6")
-scale = Vector2(0.15, 0.15)
+scale = Vector2(0.16, 0.16)
 texture = ExtResource("3_cmqg3")
