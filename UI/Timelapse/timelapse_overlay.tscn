@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmm6nlf25d2ip"]
+[gd_scene load_steps=9 format=3 uid="uid://dmm6nlf25d2ip"]
 
 [ext_resource type="PackedScene" uid="uid://ciiodpmfoaxxq" path="res://UI/Timelapse/klokje.tscn" id="1_3u11p"]
+[ext_resource type="Script" path="res://UI/Timelapse/timelapse_overlay.gd" id="1_ny7wl"]
 [ext_resource type="Shader" path="res://UI/Timelapse/timelapse_overlay.gdshader" id="2_ii5rt"]
 [ext_resource type="Texture2D" uid="uid://dyyqglwj7by1s" path="res://UI/Timelapse/iamspeed.png" id="3_cia56"]
 
@@ -8,7 +9,117 @@
 shader = ExtResource("2_ii5rt")
 shader_parameter/speed = 10
 
+[sub_resource type="Animation" id="Animation_pptnh"]
+resource_name = "Start"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/BOT:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 648), Vector2(0, 578)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/TOP:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -70), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/Klokje:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1055, -80), Vector2(1055, 160)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/TextureRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_pqa3h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/BOT:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 648)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/TOP:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -70)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/Klokje:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1055, -80)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/TextureRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5gpek"]
+_data = {
+"RESET": SubResource("Animation_pqa3h"),
+"Start": SubResource("Animation_pptnh")
+}
+
 [node name="timelapse_overlay" type="CanvasLayer"]
+script = ExtResource("1_ny7wl")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -18,11 +129,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Klokje" parent="Control" instance=ExtResource("1_3u11p")]
-position = Vector2(1055, 81)
-scale = Vector2(2, 2)
-
 [node name="TextureRect" type="TextureRect" parent="Control"]
+visible = false
 texture_filter = 1
 material = SubResource("ShaderMaterial_1nfiv")
 layout_mode = 1
@@ -34,3 +142,32 @@ grow_vertical = 2
 texture = ExtResource("3_cia56")
 expand_mode = 1
 stretch_mode = 1
+
+[node name="TOP" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -70.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BOT" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="Klokje" parent="Control" instance=ExtResource("1_3u11p")]
+position = Vector2(1055, -80)
+scale = Vector2(2, 2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Start"
+libraries = {
+"": SubResource("AnimationLibrary_5gpek")
+}

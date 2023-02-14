@@ -35,8 +35,8 @@ func vliegVogeltjeVlieg():
 	bird.stopVogelken()
 	getFirstPoint()
 	getSecondPoint()
-	print(EDGE.keys()[sourceEdge], sourcePos)
-	print(EDGE.keys()[targetEdge], targetPos)
+#	print(EDGE.keys()[sourceEdge], sourcePos)
+#	print(EDGE.keys()[targetEdge], targetPos)
 	
 	src.position = sourcePos
 	target.position = targetPos
@@ -95,8 +95,6 @@ func pointAlongEdge(edge: EDGE) -> Vector2:
 			pos.y = -screenOffset.y
 			pos.x = sampleX()
 	return pos
-
-
 
 func _on_bird_collide():
 	emit_signal("collide")

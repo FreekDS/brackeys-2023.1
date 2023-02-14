@@ -32,8 +32,9 @@ func _physics_process(delta):
 		var collision = move_and_collide(velocity)
 		if collision and collision.get_collider().is_in_group("Player"):
 			emit_signal("collide")
+			$CollisionShape2D.disabled = true
 	if isPeaking:
-		pass	
+		pass
 	
 	
 
