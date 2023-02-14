@@ -19,3 +19,5 @@ sourcePos = NodePath("../src")
 targetPos = NodePath("../target")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="collide" from="Bird" to="." method="_on_bird_collide"]

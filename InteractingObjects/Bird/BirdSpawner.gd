@@ -20,6 +20,7 @@ var targetEdge: EDGE
 var sourcePos = Vector2.ZERO
 var targetPos = Vector2.ZERO
 
+signal collide
 # TODO laat zen koppeke nekeer piepen voordat hem afkomt
 # ik zou da met animation tree doen of procedural met code
 # mss is procedural gemakkeijkerek
@@ -31,6 +32,7 @@ func _ready():
 	vliegVogeltjeVlieg()
 
 func vliegVogeltjeVlieg():
+	bird.stopVogelken()
 	getFirstPoint()
 	getSecondPoint()
 	print(EDGE.keys()[sourceEdge], sourcePos)
@@ -40,11 +42,17 @@ func vliegVogeltjeVlieg():
 	target.position = targetPos
 	
 	bird.position = sourcePos
-	bird.start()
+	bird.showKoppeke()
+	var t = Timer.new()
+	t.set_wait_time(1)
+	t.set_one_shot(true)
+	self.add_child(t)
+	t.start()
+	t.connect("timeout", bird.start)
 
-func _input(event):
-	if event.is_action_pressed("ui_accept"):
-		vliegVogeltjeVlieg()
+#func _input(event):
+#	if event.is_action_pressed("ui_accept"):
+#		vliegVogeltjeVlieg()
 
 func sampleX() -> float:
 	return randf_range(-screenOffset.x, screenOffset.x)
@@ -88,3 +96,7 @@ func pointAlongEdge(edge: EDGE) -> Vector2:
 			pos.x = sampleX()
 	return pos
 
+
+
+func _on_bird_collide():
+	emit_signal("collide")

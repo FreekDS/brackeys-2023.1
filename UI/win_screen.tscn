@@ -1,0 +1,90 @@
+[gd_scene load_steps=12 format=3 uid="uid://d23u4v2hvdw2k"]
+
+[ext_resource type="Script" path="res://UI/win_screen.gd" id="1_qn1vn"]
+[ext_resource type="Texture2D" uid="uid://deux0xyp5y054" path="res://UI/dead lmao.jpg" id="2_57j4j"]
+[ext_resource type="AudioStream" uid="uid://cao4v5kp2lsd3" path="res://UI/winwinwin.wav" id="3_vqbt4"]
+[ext_resource type="Texture2D" uid="uid://cangrqkubxjdn" path="res://UI/Button/ButtonHover.png" id="4_6lswq"]
+[ext_resource type="Texture2D" uid="uid://dxopbjd0ltrwb" path="res://UI/Button/Button.png" id="5_epohw"]
+[ext_resource type="Texture2D" uid="uid://cmapbgyggvw6a" path="res://UI/Button/ButtonPressed.png" id="6_xotfg"]
+[ext_resource type="Texture2D" uid="uid://25p4lwvqpybu" path="res://UI/Button/PlayButton.png" id="7_jv0wf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jqrmb"]
+texture = ExtResource("4_6lswq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_snrka"]
+texture = ExtResource("5_epohw")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1os1k"]
+texture = ExtResource("6_xotfg")
+
+[sub_resource type="Theme" id="Theme_g3dxo"]
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = SubResource("StyleBoxTexture_jqrmb")
+Button/styles/normal = SubResource("StyleBoxTexture_snrka")
+Button/styles/pressed = SubResource("StyleBoxTexture_1os1k")
+
+[node name="WinScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.995448)
+script = ExtResource("1_qn1vn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_57j4j")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vqbt4")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+anchor_left = 0.501
+anchor_top = 0.856
+anchor_right = 0.501
+anchor_bottom = 0.856
+offset_left = -210.152
+offset_top = -23.688
+offset_right = 210.848
+offset_bottom = 23.312
+theme = SubResource("Theme_g3dxo")
+text = "Groeit nog nen boom"
+icon = ExtResource("7_jv0wf")
+expand_icon = true
+
+[node name="win" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 569.0
+offset_top = 214.979
+offset_right = 609.0
+offset_bottom = 254.979
+scale = Vector2(9.91718, 7.91887)
+theme_override_colors/default_color = Color(0, 0.984314, 0, 1)
+text = "win"
+fit_content = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
