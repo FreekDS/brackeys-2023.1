@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://mpqlconek5jp"]
+
+[ext_resource type="Shader" path="res://Common/pixelate.gdshader" id="1_fibjx"]
+[ext_resource type="Script" path="res://InteractingObjects/Lumberaxe/Lumberaxe.gd" id="1_smxmg"]
+[ext_resource type="Texture2D" uid="uid://dje3pgk877jv" path="res://InteractingObjects/Lumberaxe/axeplaceholder.png" id="2_ex025"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stv25"]
+size = Vector2(40, 120)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0a0w3"]
+shader = ExtResource("1_fibjx")
+shader_parameter/pixelSize = 16
+
+[node name="Lumberaxe" type="CharacterBody2D"]
+position = Vector2(285, 440)
+script = ExtResource("1_smxmg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_stv25")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_0a0w3")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_ex025")

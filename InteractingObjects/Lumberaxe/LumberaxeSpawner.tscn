@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bok2xyi22l8aq"]
+
+[ext_resource type="PackedScene" uid="uid://mpqlconek5jp" path="res://InteractingObjects/Lumberaxe/Lumberaxe.tscn" id="1_7vln3"]
+[ext_resource type="Script" path="res://InteractingObjects/Lumberaxe/LumberaxeSpawner.gd" id="1_snl3j"]
+
+[node name="LumberaxeSpawner" type="Node2D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_snl3j")
+player = NodePath("Marker2D")
+
+[node name="Lumberaxe" parent="." node_paths=PackedStringArray("Start", "End") instance=ExtResource("1_7vln3")]
+position = Vector2(-122, 440)
+Start = NodePath("../Startposition")
+End = NodePath("../Endposition")
+
+[node name="Startposition" type="Marker2D" parent="."]
+position = Vector2(0, 648)
+
+[node name="Endposition" type="Marker2D" parent="."]
+position = Vector2(1152, 648)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(578, -230)

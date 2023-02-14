@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dlmo4waiexr4b"]
+[gd_scene load_steps=11 format=3 uid="uid://dlmo4waiexr4b"]
 
 [ext_resource type="Script" path="res://Common/main.gd" id="1_7v3cp"]
 [ext_resource type="PackedScene" uid="uid://fd7dcfgy88hs" path="res://InteractingObjects/Bird/BirdSpawner.tscn" id="2_3pf32"]
@@ -8,12 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://da33skjc8gqe4" path="res://InteractingObjects/Ground/Ground.tscn" id="5_03k3g"]
 [ext_resource type="PackedScene" uid="uid://n17n1ruijcor" path="res://InteractingObjects/Player/MapleSeed.tscn" id="6_f7r1k"]
 [ext_resource type="PackedScene" uid="uid://bpqs5c8pkymdr" path="res://UI/dead_screen.tscn" id="7_ydsya"]
+[ext_resource type="PackedScene" uid="uid://bok2xyi22l8aq" path="res://InteractingObjects/Lumberaxe/LumberaxeSpawner.tscn" id="8_cyi0w"]
 [ext_resource type="PackedScene" path="res://UI/win_screen.tscn" id="8_iw22v"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_7v3cp")
-
-[node name="BirdSpawner" parent="." instance=ExtResource("2_3pf32")]
 
 [node name="Clouds" parent="." instance=ExtResource("2_hgd1f")]
 
@@ -33,6 +32,11 @@ position = Vector2(-156, 622)
 
 [node name="MapleSeed" parent="." instance=ExtResource("6_f7r1k")]
 
+[node name="BirdSpawner" parent="." instance=ExtResource("2_3pf32")]
+
+[node name="LumberaxeSpawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_cyi0w")]
+player = NodePath("../MapleSeed")
+
 [node name="EndScreen" type="CanvasLayer" parent="."]
 
 [node name="DeadScreen" parent="EndScreen" instance=ExtResource("7_ydsya")]
@@ -48,3 +52,5 @@ offset_bottom = 20.0
 
 [connection signal="body_entered" from="Scrolling/Ground" to="." method="_on_ground_body_entered"]
 [connection signal="win" from="EndScreen/WinScreen" to="." method="_on_win_screen_win"]
+
+[editable path="LumberaxeSpawner"]
