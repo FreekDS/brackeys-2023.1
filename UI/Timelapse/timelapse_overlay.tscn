@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmm6nlf25d2ip"]
+
+[ext_resource type="PackedScene" uid="uid://ciiodpmfoaxxq" path="res://UI/Timelapse/klokje.tscn" id="1_3u11p"]
+[ext_resource type="Shader" path="res://UI/Timelapse/timelapse_overlay.gdshader" id="2_ii5rt"]
+[ext_resource type="Texture2D" uid="uid://dyyqglwj7by1s" path="res://UI/Timelapse/iamspeed.png" id="3_cia56"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1nfiv"]
+shader = ExtResource("2_ii5rt")
+shader_parameter/speed = 10
+
+[node name="timelapse_overlay" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Klokje" parent="Control" instance=ExtResource("1_3u11p")]
+position = Vector2(1055, 81)
+scale = Vector2(2, 2)
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_1nfiv")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_cia56")
+expand_mode = 1
+stretch_mode = 1
