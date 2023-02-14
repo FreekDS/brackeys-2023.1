@@ -32,6 +32,7 @@ func _ready():
 	vliegVogeltjeVlieg()
 
 func vliegVogeltjeVlieg():
+	bird.stopVogelken()
 	getFirstPoint()
 	getSecondPoint()
 	print(EDGE.keys()[sourceEdge], sourcePos)
@@ -41,7 +42,13 @@ func vliegVogeltjeVlieg():
 	target.position = targetPos
 	
 	bird.position = sourcePos
-	bird.start()
+	bird.showKoppeke()
+	var t = Timer.new()
+	t.set_wait_time(1)
+	t.set_one_shot(true)
+	self.add_child(t)
+	t.start()
+	t.connect("timeout", bird.start)
 
 #func _input(event):
 #	if event.is_action_pressed("ui_accept"):

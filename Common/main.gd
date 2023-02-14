@@ -18,7 +18,7 @@ func _ready():
 	RandomObjectSpawnTimer.connect("timeout", triggerRandomObjectSpawnTick)
 	RandomObjectSpawnTimer.set_one_shot(false)
 	add_child(RandomObjectSpawnTimer)
-	RandomObjectSpawnTimer.start(1.0)
+	RandomObjectSpawnTimer.start(5)
 	birdSpawner.connect("collide",lose)
 
 func _on_ground_body_entered(body):
@@ -29,9 +29,10 @@ func _on_ground_body_entered(body):
 		winlmaoScreen.play()
 		
 func triggerRandomObjectSpawnTick():
+	print("trigger object")
 	rng.randomize()
-	var number= rng.randi_range(1,10)
-	if(number<=difficulty):
+	var number = rng.randi_range(1,10)
+	if(number <= difficulty):
 		birdSpawner.vliegVogeltjeVlieg()
 		
 	
