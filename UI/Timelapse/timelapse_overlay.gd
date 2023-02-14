@@ -11,9 +11,9 @@ func stop():
 	animations.play_backwards("Start")
 
 # vr te testen
-#func _input(event):
-#	if event.is_action_pressed("ui_up"):
-#		stop()
-#	if event.is_action_pressed("ui_down"):
-#		start()
+func _input(event):
+	if event.is_action_pressed("ui_up"):
+		stop()
+	if event.is_action_pressed("ui_down"):
+		start()
 
