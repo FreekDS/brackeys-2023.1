@@ -119,6 +119,7 @@ _data = {
 }
 
 [node name="timelapse_overlay" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_ny7wl")
 
 [node name="Control" type="Control" parent="."]
