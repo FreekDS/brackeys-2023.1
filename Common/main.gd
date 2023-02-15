@@ -16,6 +16,7 @@ var difficulty=100
 var gamePlaying = true
 
 signal win
+signal dead
 func _ready():
 	RandomObjectSpawnTimer=Timer.new()
 	RandomObjectSpawnTimer.connect("timeout", triggerRandomObjectSpawnTick)
@@ -50,3 +51,7 @@ func lose():
 	characterNode.stopGame()
 	dedlmaoScreen.visible=true
 	dedlmaoScreen.play()
+
+
+func _on_dead_screen_dead():
+	emit_signal("dead")

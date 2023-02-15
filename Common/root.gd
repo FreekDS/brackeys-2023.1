@@ -14,6 +14,8 @@ func startGame():
 	currentMain=gameplay.instantiate()
 	add_child(currentMain)
 	currentMain.connect("win",_on_main_win)
+	currentMain.connect("dead",restart)
+	
 func _on_main_win():
 	difficulty+=1
 	round+=1
@@ -21,8 +23,11 @@ func _on_main_win():
 	currentMain=gameplay.instantiate()
 	add_child(currentMain)
 	currentMain.connect("win",_on_main_win)
+	currentMain.connect("dead",restart)
 	currentMain.difficulty=difficulty
-	
+
+func restart():
+	get_tree().reload_current_scene()
 	
 func removeAndStart():
 	remove_child($Toremove)

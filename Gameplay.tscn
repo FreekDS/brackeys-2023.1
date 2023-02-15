@@ -52,4 +52,5 @@ offset_right = 15.0
 offset_bottom = 20.0
 
 [connection signal="body_entered" from="Scrolling/Ground" to="." method="_on_ground_body_entered"]
+[connection signal="dead" from="EndScreen/DeadScreen" to="." method="_on_dead_screen_dead"]
 [connection signal="win" from="EndScreen/WinScreen" to="." method="_on_win_screen_win"]
