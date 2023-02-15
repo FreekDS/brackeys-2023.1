@@ -43,7 +43,7 @@ func stopVogelken():
 
 
 func showKoppeke():
-	var p1 = Vector2(sourcePos.position.x, sourcePos.position.y)
+#	var p1 = Vector2(sourcePos.position.x, sourcePos.position.y)
 	var p2 = Vector2(targetPos.position.x, targetPos.position.y)
 	direction = (targetPos.position - sourcePos.position).normalized()
 	sprite.flip_h = direction.x > 0
