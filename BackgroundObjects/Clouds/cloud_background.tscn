@@ -1,11 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://da0gy62kqyiky"]
+[gd_scene load_steps=7 format=3 uid="uid://da0gy62kqyiky"]
 
 [ext_resource type="Shader" path="res://BackgroundObjects/Clouds/cloud_shader.gdshader" id="1_oqmic"]
+[ext_resource type="Script" path="res://BackgroundObjects/Clouds/cloud_background.gd" id="1_y6xmo"]
 
 [sub_resource type="Gradient" id="Gradient_poc7t"]
 offsets = PackedFloat32Array(0.349359, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_onutm"]
+noise_type = 0
+offset = Vector3(52, 0, 0)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pl0f2"]
 color_ramp = SubResource("Gradient_poc7t")
@@ -17,21 +20,9 @@ shader_parameter/cloudTreshold = 0.2
 shader_parameter/pixelSize = 4
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_pl0f2")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kb0qu"]
-shader = ExtResource("1_oqmic")
-shader_parameter/cloudTreshold = 0.5
-shader_parameter/pixelSize = 16
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_uj5sx"]
-noise_type = 3
-fractal_weighted_strength = 1.0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2j2jh"]
-width = 1000
-noise = SubResource("FastNoiseLite_uj5sx")
-
 [node name="Clouds" type="CanvasLayer"]
 layer = -1
+script = ExtResource("1_y6xmo")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_ya2cu")
@@ -40,14 +31,3 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_kb0qu")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("NoiseTexture2D_2j2jh")
-stretch_mode = 1

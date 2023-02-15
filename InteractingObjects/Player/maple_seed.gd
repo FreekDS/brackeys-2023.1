@@ -12,7 +12,7 @@ var marginx = 25
 var marginy = 10
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if enabled:
 		var speed = moveSpeed
 		# Get the input direction and handle the movement/deceleration.
