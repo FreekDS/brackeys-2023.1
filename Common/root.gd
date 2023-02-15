@@ -4,7 +4,7 @@ var difficulty =0
 var round =0
 var gameplay=preload("res://Gameplay.tscn")
 var currentMain=null
-
+var started=false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Toremove/Seed.pause()
@@ -34,10 +34,12 @@ func removeAndStart():
 	startGame()
 	
 func _on_button_pressed():	
-	$Toremove/ZoomCamera.zoomToSeed($Toremove/Seed.position)
-	var timer=Timer.new()
-	timer.connect("timeout", removeAndStart)
-	timer.set_one_shot(true)
-	add_child(timer)
-	timer.start(3)
+	if !started:
+		started=true
+		$Toremove/ZoomCamera.zoomToSeed($Toremove/Seed.position)
+		var timer=Timer.new()
+		timer.connect("timeout", removeAndStart)
+		timer.set_one_shot(true)
+		add_child(timer)
+		timer.start(3)
 
