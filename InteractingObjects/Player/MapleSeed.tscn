@@ -1,35 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://n17n1ruijcor"]
+[gd_scene load_steps=4 format=3 uid="uid://n17n1ruijcor"]
 
 [ext_resource type="Script" path="res://InteractingObjects/Player/maple_seed.gd" id="1_nu1ni"]
-[ext_resource type="Shader" path="res://Common/pixelate.gdshader" id="2_kvl52"]
-[ext_resource type="Texture2D" uid="uid://bpst60b5bcv01" path="res://InteractingObjects/Player/vliedering.png" id="3_t68jd"]
-[ext_resource type="Texture2D" uid="uid://c01np11i6h1ou" path="res://InteractingObjects/Player/vliegerpixel.png" id="4_0nm3h"]
+[ext_resource type="SpriteFrames" uid="uid://hbfctfbm3fp0" path="res://InteractingObjects/Player/propellorken_frames.tres" id="5_kuj3j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57mjh"]
 size = Vector2(30, 30)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4rlh6"]
-shader = ExtResource("2_kvl52")
-shader_parameter/pixelSize = 12
 
 [node name="MapleSeed" type="CharacterBody2D" groups=["Player"]]
 motion_mode = 1
 script = ExtResource("1_nu1ni")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-40, 0)
+position = Vector2(0, 10)
 rotation = -3.14159
 shape = SubResource("RectangleShape2D_57mjh")
 
-[node name="MapleSeed" type="Sprite2D" parent="."]
-visible = false
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-material = SubResource("ShaderMaterial_4rlh6")
-scale = Vector2(-0.16, 0.16)
-texture = ExtResource("3_t68jd")
-
-[node name="Vliegerpixel" type="Sprite2D" parent="."]
-texture_filter = 3
-position = Vector2(-28, -3)
-scale = Vector2(3, 3)
-texture = ExtResource("4_0nm3h")
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("5_kuj3j")
+animation = &"vlieg"
+autoplay = "vlieg"

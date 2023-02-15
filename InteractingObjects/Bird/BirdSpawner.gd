@@ -67,7 +67,6 @@ func getFirstPoint():
 	sourceEdge = randEdge()
 	while sourceEdge == EDGE.BOTTOM:
 		sourceEdge = randEdge()
-	var target = Vector2.ZERO
 	sourcePos = pointAlongEdge(sourceEdge)
 	
 func getSecondPoint():

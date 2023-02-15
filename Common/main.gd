@@ -4,6 +4,7 @@ extends Node2D
 @onready var dedlmaoScreen= $EndScreen/DeadScreen
 @onready var winlmaoScreen= $EndScreen/WinScreen
 @onready var birdSpawner= $BirdSpawner
+@onready var lumberaxeSpawner = $LumberaxeSpawner
 #Use seperate timer to handle random objects, as we want this to be based om actual time and not any physics process/framerate
 #Counting the delta would also work, but I prefer this
 var RandomObjectSpawnTimer = null
@@ -35,9 +36,9 @@ func triggerRandomObjectSpawnTick():
 	print("trigger object")
 	rng.randomize()
 	var number = rng.randi_range(1,10)
-	if(number <= difficulty) and gamePlaying:
-		birdSpawner.vliegVogeltjeVlieg()
-		
+	if(0 <= difficulty) and gamePlaying:
+		# birdSpawner.vliegVogeltjeVlieg()
+		lumberaxeSpawner.startThrowAtPlayer()
 	
 func _on_win_screen_win():
 	emit_signal("win")

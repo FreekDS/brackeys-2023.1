@@ -90,6 +90,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_dn3ln")
 }],
 "loop": true,
-"name": &"default",
+"name": &"vlieg",
 "speed": 20.0
 }]

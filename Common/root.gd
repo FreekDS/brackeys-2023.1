@@ -9,12 +9,6 @@ func _ready():
 	add_child(currentMain)
 	currentMain.connect("win",_on_main_win)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func _on_main_win():
 	difficulty+=1
 	remove_child(currentMain)

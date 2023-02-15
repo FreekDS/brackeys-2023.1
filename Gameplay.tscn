@@ -35,6 +35,7 @@ position = Vector2(-156, 622)
 [node name="BirdSpawner" parent="." instance=ExtResource("2_3pf32")]
 
 [node name="LumberaxeSpawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_cyi0w")]
+position = Vector2(-577, -323)
 player = NodePath("../MapleSeed")
 
 [node name="EndScreen" type="CanvasLayer" parent="."]
