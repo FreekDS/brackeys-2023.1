@@ -8,6 +8,8 @@ extends CharacterBody2D
 # Put interpolation point 100 above the player, can be randomized 
 var offsetPlayerY = -100
 
+var cameraOffset
+
 var playerTargetPosition
 var t = 0
 var throwing = false
@@ -24,10 +26,20 @@ func _quadratic_bezier(p0: Vector2, p1: Vector2, p2: Vector2, time: float):
 func playerWithOffset() -> Vector2:
 	return playerTargetPosition + Vector2(0, offsetPlayerY)
 
+func _get_viewport_center() -> Vector2:
+	var transform : Transform2D = get_viewport_transform()
+	var scale : Vector2 = transform.get_scale()
+	return -transform.origin / scale + get_viewport_rect().size / scale / 2
+	
 func _physics_process(delta):
 	if throwing:
 		t += delta/60 *  throwSpeed
-		position = _quadratic_bezier(Start.position, playerWithOffset(), End.position, t)
+		var viewport_rect = get_viewport_rect().size/2
+		var center_pos = get_viewport().get_camera_2d().get_screen_center_position()
+		var start = center_pos - viewport_rect
+		var target = Vector2(playerTargetPosition.x+abs(start.x), playerTargetPosition.y- abs(start.y)/2)
+		var end = Vector2(Start.position.x + 2*(target.x-Start.position.x), End.position.y)
+		position = _quadratic_bezier(Start.position, target, end, t)
 		$Sprite2D.rotation_degrees += 10
 		if position.y > End.position.y + 100:
 			throwing = false
