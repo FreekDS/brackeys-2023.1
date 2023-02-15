@@ -27,6 +27,7 @@ stretch_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect"]
 material = SubResource("ShaderMaterial_3fyfg")
+layout_mode = 0
 offset_left = 5314.0
 offset_top = 1.0
 offset_right = 10640.0
