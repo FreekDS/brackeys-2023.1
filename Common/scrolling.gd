@@ -1,7 +1,7 @@
 extends Node2D
 
 
-@export var speed : int = 20
+@export var speed : int = 100
 
 var active = true
 

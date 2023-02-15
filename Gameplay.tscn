@@ -25,10 +25,10 @@ script = ExtResource("3_m0q01")
 [node name="NonCollsionObjects" type="Node2D" parent="Scrolling"]
 
 [node name="Tree" parent="Scrolling/NonCollsionObjects" instance=ExtResource("4_hrruo")]
-position = Vector2(0, 300)
+position = Vector2(-407, 645)
 
 [node name="Ground" parent="Scrolling" instance=ExtResource("5_03k3g")]
-position = Vector2(-156, 622)
+position = Vector2(-478, 1691)
 
 [node name="MapleSeed" parent="." instance=ExtResource("6_f7r1k")]
 

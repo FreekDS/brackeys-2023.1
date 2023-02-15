@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdjcibipcey38"]
+[gd_scene load_steps=3 format=3 uid="uid://bdjcibipcey38"]
 
 [ext_resource type="Script" path="res://Common/root.gd" id="1_ovkdd"]
+[ext_resource type="AudioStream" uid="uid://wa6wns7l31dp" path="res://intro_song.mp3" id="2_8jrji"]
 
 [node name="ROOT" type="Node2D"]
 script = ExtResource("1_ovkdd")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_8jrji")
+volume_db = -10.0
+autoplay = true
