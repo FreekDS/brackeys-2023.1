@@ -8,21 +8,21 @@
 [ext_resource type="Texture2D" uid="uid://cangrqkubxjdn" path="res://UI/Button/ButtonHover.png" id="4_715rl"]
 [ext_resource type="Texture2D" uid="uid://cmapbgyggvw6a" path="res://UI/Button/ButtonPressed.png" id="6_7rsr6"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jqrmb"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i1b4x"]
 texture = ExtResource("4_715rl")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_snrka"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ymwr"]
 texture = ExtResource("4_1rui0")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1os1k"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ou8le"]
 texture = ExtResource("6_7rsr6")
 
 [sub_resource type="Theme" id="Theme_g3dxo"]
 Button/styles/disabled = null
 Button/styles/focus = null
-Button/styles/hover = SubResource("StyleBoxTexture_jqrmb")
-Button/styles/normal = SubResource("StyleBoxTexture_snrka")
-Button/styles/pressed = SubResource("StyleBoxTexture_1os1k")
+Button/styles/hover = SubResource("StyleBoxTexture_i1b4x")
+Button/styles/normal = SubResource("StyleBoxTexture_1ymwr")
+Button/styles/pressed = SubResource("StyleBoxTexture_ou8le")
 
 [node name="DeadScreen" type="Control"]
 layout_mode = 3

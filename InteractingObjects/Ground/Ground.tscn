@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bdkl00f3f5vyt" path="res://InteractingObjects/Ground/ground.jpg" id="2_yhsuy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0ugu"]
-size = Vector2(4047, 36)
+size = Vector2(15989, 36)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3fyfg"]
 shader = ExtResource("1_dfvxi")
@@ -13,7 +13,7 @@ shader_parameter/pixelSize = 16
 [node name="Node2D" type="Area2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(280.5, 0)
+position = Vector2(6251.5, 0)
 shape = SubResource("RectangleShape2D_b0ugu")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -22,5 +22,14 @@ offset_left = -2652.0
 offset_top = -14.0
 offset_right = 2674.0
 offset_bottom = 867.0
+texture = ExtResource("2_yhsuy")
+stretch_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect"]
+material = SubResource("ShaderMaterial_3fyfg")
+offset_left = 5314.0
+offset_top = 1.0
+offset_right = 10640.0
+offset_bottom = 882.0
 texture = ExtResource("2_yhsuy")
 stretch_mode = 1
