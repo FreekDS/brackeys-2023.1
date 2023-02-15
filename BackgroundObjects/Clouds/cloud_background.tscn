@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://da0gy62kqyiky"]
+[gd_scene load_steps=10 format=3 uid="uid://da0gy62kqyiky"]
 
 [ext_resource type="Shader" path="res://BackgroundObjects/Clouds/cloud_shader.gdshader" id="1_oqmic"]
+[ext_resource type="Script" path="res://BackgroundObjects/Clouds/cloud_background.gd" id="1_pu2ao"]
 
 [sub_resource type="Gradient" id="Gradient_poc7t"]
 offsets = PackedFloat32Array(0.349359, 1)
@@ -32,6 +33,7 @@ noise = SubResource("FastNoiseLite_uj5sx")
 
 [node name="Clouds" type="CanvasLayer"]
 layer = -1
+script = ExtResource("1_pu2ao")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_ya2cu")
