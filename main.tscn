@@ -63,6 +63,7 @@ position = Vector2(360, 373)
 scale = Vector2(0.4, 0.357)
 
 [node name="Clouds" parent="Toremove" instance=ExtResource("4_h3bps")]
+animated = true
 
 [node name="ZoomCamera" type="Camera2D" parent="Toremove"]
 position = Vector2(579, 325)
