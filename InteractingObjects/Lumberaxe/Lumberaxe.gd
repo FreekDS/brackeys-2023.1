@@ -43,11 +43,13 @@ func _physics_process(delta):
 		$Sprite2D.rotation_degrees += 10
 		if position.y > End.position.y + 100:
 			throwing = false
+			$SwingSwangSwung.stop()
 			t = 0
 			emit_signal("throw_completed")
 
 func throwAtPlayer(player: Vector2) -> void:
 	playerTargetPosition = player
 	throwing = true
+	$SwingSwangSwung.play()
 	t = 0
 	# randomize offset ?
