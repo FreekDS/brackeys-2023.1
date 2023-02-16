@@ -23,6 +23,7 @@ func start():
 func _ready():
 	assert(sourcePos != null, "loempen uil")
 	assert(targetPos != null, "loempen uil x2")
+	randomizePitch()
 
 
 func init(pos: Vector2, atEdge: BirdSpawner.EDGE):
@@ -96,6 +97,11 @@ func showKoppeke():
 	direction = (targetPos.position - sourcePos.position).normalized()
 	sprite.flip_h = direction.x > 0
 	position.move_toward(p2, 2)
+
+func randomizePitch():
+	var pitch = randf_range(0.7, 1.2)
+	$Tsjirpke.pitch_scale = pitch
+	$Tsjirpke2.pitch_scale = pitch
 	
 
 func _on_animation_player_animation_finished(_anim_name):
