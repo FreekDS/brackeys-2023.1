@@ -1,9 +1,10 @@
+class_name Bird
 extends CharacterBody2D
 
 
 @export var speed = 50.0
-@export var sourcePos : Marker2D 
-@export var targetPos : Marker2D
+@export var sourcePos : Vector2 = Vector2.ZERO
+@export var targetPos : Vector2 = Vector2.ZERO
 
 @onready var sprite = $BirbPlaceholder
 
@@ -21,14 +22,14 @@ func start():
 	$AnimationPlayer.play("koppeke")
 
 func _ready():
-	assert(sourcePos != null, "loempen uil")
-	assert(targetPos != null, "loempen uil x2")
 	randomizePitch()
 
 
-func init(pos: Vector2, atEdge: BirdSpawner.EDGE):
+func init(pos: Vector2, target: Vector2, atEdge: BirdSpawner.EDGE):
 	self.startsOnEdge = atEdge
 	self.position = pos
+	self.sourcePos = pos
+	self.targetPos = target
 	rotation_degrees = 0
 	# Correction for the animation to let bird be just off screen
 	match self.startsOnEdge:
@@ -46,12 +47,13 @@ func init(pos: Vector2, atEdge: BirdSpawner.EDGE):
 			position.y -= $BackMarker.position.x
 
 func fly():
-	direction = (targetPos.position - sourcePos.position).normalized()
+	direction = (targetPos - sourcePos).normalized()
 	sprite.flip_h = direction.x > 0
 	rotation_degrees = 0
 	isFlying = true
 #	$kahkaa.play()
 	$Tsjirpke2.play()
+	$DespawnTimer.start()
 
 func _physics_process(delta):
 	# if Input.is_action_just_pressed("ui_accept"): #just vr te testen
@@ -62,8 +64,6 @@ func _physics_process(delta):
 		if collision and collision.get_collider().is_in_group("Player"):
 			emit_signal("collide")
 			$CollisionShape2D.disabled = true
-	if isPeaking:
-		pass
 
 func stopVogelken():
 	isFlying = false
@@ -93,8 +93,8 @@ func move_pixel_backward():
 
 func showKoppeke():
 #	var p1 = Vector2(sourcePos.position.x, sourcePos.position.y)
-	var p2 = Vector2(targetPos.position.x, targetPos.position.y)
-	direction = (targetPos.position - sourcePos.position).normalized()
+	var p2 = Vector2(targetPos.x, targetPos.y)
+	direction = (targetPos - sourcePos).normalized()
 	sprite.flip_h = direction.x > 0
 	position.move_toward(p2, 2)
 
@@ -107,3 +107,7 @@ func randomizePitch():
 func _on_animation_player_animation_finished(_anim_name):
 	sprite.frame = randi_range(0,1)
 	fly()
+
+
+func _on_despawn_timer_timeout():
+	queue_free()

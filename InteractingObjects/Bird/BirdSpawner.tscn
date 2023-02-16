@@ -1,23 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://fd7dcfgy88hs"]
+[gd_scene load_steps=6 format=3 uid="uid://fd7dcfgy88hs"]
 
 [ext_resource type="Script" path="res://InteractingObjects/Bird/BirdSpawner.gd" id="1_2nyan"]
 [ext_resource type="PackedScene" uid="uid://buajshfctbjsy" path="res://InteractingObjects/Bird/Bird.tscn" id="1_6fdpd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a6qbn"]
+
+[sub_resource type="Gradient" id="Gradient_6b647"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mwo5s"]
+gradient = SubResource("Gradient_6b647")
 
 [node name="BirdSpawner" type="Node2D"]
 script = ExtResource("1_2nyan")
 
 [node name="src" type="Marker2D" parent="."]
-position = Vector2(991, 568)
+position = Vector2(-387, -197)
 
 [node name="target" type="Marker2D" parent="."]
-position = Vector2(34, 324)
+position = Vector2(417, 243)
 
-[node name="Bird" parent="." node_paths=PackedStringArray("sourcePos", "targetPos") instance=ExtResource("1_6fdpd")]
+[node name="Bird" parent="." instance=ExtResource("1_6fdpd")]
 position = Vector2(1089, 585)
-speed = 1000.0
-sourcePos = NodePath("../src")
-targetPos = NodePath("../target")
+speed = 500.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+process_material = SubResource("ShaderMaterial_a6qbn")
+texture = SubResource("GradientTexture1D_mwo5s")
+lifetime = 1.54
 
 [connection signal="collide" from="Bird" to="." method="_on_bird_collide"]

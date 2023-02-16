@@ -38,7 +38,7 @@ func triggerRandomObjectSpawnTick():
 	rng.randomize()
 	var number = rng.randi_range(1,10)
 	if(0 <= difficulty) and gamePlaying:
-		# birdSpawner.vliegVogeltjeVlieg()
+#		birdSpawner.vliegVogeltjeVlieg()
 		lumberaxeSpawner.startThrowAtPlayer()
 	
 func _on_win_screen_win():
