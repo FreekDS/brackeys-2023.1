@@ -15,7 +15,6 @@
 script = ExtResource("1_7v3cp")
 
 [node name="Clouds" parent="." instance=ExtResource("2_hgd1f")]
-animated = true
 
 [node name="PlayerCam" type="Camera2D" parent="."]
 scale = Vector2(1.3526, 1.43822)

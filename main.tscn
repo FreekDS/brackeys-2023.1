@@ -41,6 +41,7 @@ autoplay = true
 [node name="Menu" type="Node2D" parent="."]
 
 [node name="Button" type="Button" parent="Menu"]
+texture_filter = 1
 anchors_preset = -1
 anchor_left = 0.501
 anchor_top = 0.856
@@ -63,7 +64,6 @@ position = Vector2(360, 373)
 scale = Vector2(0.4, 0.357)
 
 [node name="Clouds" parent="Toremove" instance=ExtResource("4_h3bps")]
-animated = true
 
 [node name="ZoomCamera" type="Camera2D" parent="Toremove"]
 position = Vector2(579, 325)

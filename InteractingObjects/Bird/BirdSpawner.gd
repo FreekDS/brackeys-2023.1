@@ -1,3 +1,4 @@
+class_name BirdSpawner
 extends Node2D
 
 var screenOffset : Vector2
@@ -28,7 +29,6 @@ signal collide
 func _ready():
 	screenOffset.x = ProjectSettings.get("display/window/size/viewport_width") / 2
 	screenOffset.y = ProjectSettings.get("display/window/size/viewport_height") / 2
-	
 	vliegVogeltjeVlieg()
 
 func vliegVogeltjeVlieg():
@@ -41,18 +41,12 @@ func vliegVogeltjeVlieg():
 	src.position = sourcePos
 	target.position = targetPos
 	
-	bird.position = sourcePos
-	bird.showKoppeke()
-	var t = Timer.new()
-	t.set_wait_time(1)
-	t.set_one_shot(true)
-	self.add_child(t)
-	t.start()
-	t.connect("timeout", bird.start)
+	bird.init(sourcePos, sourceEdge)
+	bird.start()
 
-#func _input(event):
-#	if event.is_action_pressed("ui_accept"):
-#		vliegVogeltjeVlieg()
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		vliegVogeltjeVlieg()
 
 func sampleX() -> float:
 	return randf_range(-screenOffset.x, screenOffset.x)
