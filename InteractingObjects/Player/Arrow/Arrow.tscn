@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmluuq14vd1ib"]
+
+[ext_resource type="Script" path="res://InteractingObjects/Player/Arrow/Arrow.gd" id="1_fw0ql"]
+[ext_resource type="Texture2D" uid="uid://dk02hu2kgbqeu" path="res://InteractingObjects/Player/Arrow/ArrowHead.png" id="2_bb288"]
+[ext_resource type="Texture2D" uid="uid://cliuxe6w00snm" path="res://InteractingObjects/Player/Arrow/ArrowEnd.png" id="2_ieueu"]
+[ext_resource type="Texture2D" uid="uid://bn47vns4yuqtk" path="res://InteractingObjects/Player/Arrow/ArrowExtend.png" id="3_t16xk"]
+
+[node name="Arrow" type="Node2D"]
+script = ExtResource("1_fw0ql")
+
+[node name="ArrowHead" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-4, 0)
+rotation = 4.71239
+texture = ExtResource("2_bb288")
+
+[node name="ArrowExtend" type="Sprite2D" parent="."]
+texture_filter = 1
+rotation = 4.71239
+texture = ExtResource("3_t16xk")
+
+[node name="ArrowEnd" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1, 0)
+rotation = 4.71239
+texture = ExtResource("2_ieueu")

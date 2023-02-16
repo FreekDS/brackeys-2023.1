@@ -35,7 +35,8 @@ script = ExtResource("1_ovkdd")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamMP3_u7tx4")
-volume_db = -10.0
+volume_db = -20.0
+autoplay = true
 
 [node name="Menu" type="Node2D" parent="."]
 
