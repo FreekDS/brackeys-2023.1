@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cfg6wwlys75aa"]
 
 [ext_resource type="Shader" path="res://Common/pixelate.gdshader" id="1_q2y3o"]
-[ext_resource type="Texture2D" uid="uid://i4xy8f1b0btp" path="res://BackgroundObjects/Tree/Tree_placeholder_2.png" id="2_qpjof"]
+[ext_resource type="Texture2D" uid="uid://wvoply6hou73" path="res://BackgroundObjects/Tree/boom.png" id="2_eesmn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_las12"]
 shader = ExtResource("1_q2y3o")
@@ -14,5 +14,5 @@ texture_filter = 1
 
 [node name="BoomPlaceholder" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_las12")
-scale = Vector2(20, 20)
-texture = ExtResource("2_qpjof")
+scale = Vector2(3, 3)
+texture = ExtResource("2_eesmn")

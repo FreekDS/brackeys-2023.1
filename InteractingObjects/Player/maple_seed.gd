@@ -41,7 +41,13 @@ func _physics_process(_delta):
 		move_and_slide()
 		
 #		self.rotation_degrees+=delta*1000
-		
+
+func _on_ground_hit():
+	$AnimatedSprite2D.stop()
+	$AnimatedSprite2D.frame = 0
+	velocity = Vector2.ZERO
+	enabled = false
+
 func stopGame():
 	velocity = Vector2(0,0)
 	enabled = false
