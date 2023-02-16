@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://n17n1ruijcor"]
+[gd_scene load_steps=6 format=3 uid="uid://n17n1ruijcor"]
 
 [ext_resource type="Script" path="res://InteractingObjects/Player/maple_seed.gd" id="1_nu1ni"]
-[ext_resource type="PackedScene" uid="uid://dmluuq14vd1ib" path="res://InteractingObjects/Player/Arrow/Arrow.tscn" id="3_8hj3k"]
+[ext_resource type="Script" path="res://InteractingObjects/Player/BuryAnimation.gd" id="3_bgg6v"]
+[ext_resource type="PackedScene" uid="uid://dmluuq14vd1ib" path="res://InteractingObjects/Player/Arrow/Arrow.tscn" id="4_1jkwn"]
 [ext_resource type="SpriteFrames" uid="uid://hbfctfbm3fp0" path="res://InteractingObjects/Player/propellorken_frames.tres" id="5_kuj3j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57mjh"]
@@ -22,7 +23,14 @@ scale = Vector2(2, 2)
 sprite_frames = ExtResource("5_kuj3j")
 animation = &"vlieg"
 autoplay = "vlieg"
+speed_scale = 0.0
+script = ExtResource("3_bgg6v")
 
-[node name="Arrow" parent="." instance=ExtResource("3_8hj3k")]
+[node name="BuryAnimationTick" type="Timer" parent="AnimatedSprite2D"]
+wait_time = 0.5
+
+[node name="Arrow" parent="." instance=ExtResource("4_1jkwn")]
 visible = false
 scale = Vector2(3, 3)
+
+[connection signal="timeout" from="AnimatedSprite2D/BuryAnimationTick" to="AnimatedSprite2D" method="animationFrame"]

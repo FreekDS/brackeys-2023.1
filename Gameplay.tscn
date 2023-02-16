@@ -21,14 +21,15 @@ scale = Vector2(1.3526, 1.43822)
 
 [node name="Scrolling" type="Node2D" parent="."]
 script = ExtResource("3_m0q01")
+speed = 50
+
+[node name="Ground" parent="Scrolling" instance=ExtResource("5_03k3g")]
+position = Vector2(-472, 1039)
 
 [node name="NonCollsionObjects" type="Node2D" parent="Scrolling"]
 
 [node name="Tree" parent="Scrolling/NonCollsionObjects" instance=ExtResource("4_hrruo")]
-position = Vector2(-407, 645)
-
-[node name="Ground" parent="Scrolling" instance=ExtResource("5_03k3g")]
-position = Vector2(-478, 1691)
+position = Vector2(-215, 436)
 
 [node name="MapleSeed" parent="." instance=ExtResource("6_f7r1k")]
 
