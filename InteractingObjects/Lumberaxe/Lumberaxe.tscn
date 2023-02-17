@@ -1,16 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://mpqlconek5jp"]
+[gd_scene load_steps=5 format=3 uid="uid://mpqlconek5jp"]
 
-[ext_resource type="Shader" path="res://Common/pixelate.gdshader" id="1_fibjx"]
 [ext_resource type="Script" path="res://InteractingObjects/Lumberaxe/Lumberaxe.gd" id="1_smxmg"]
-[ext_resource type="Texture2D" uid="uid://dje3pgk877jv" path="res://InteractingObjects/Lumberaxe/axeplaceholder.png" id="2_ex025"]
+[ext_resource type="Texture2D" uid="uid://b2cbg6wgwqpfp" path="res://InteractingObjects/Lumberaxe/Axe_niet_deo.png" id="2_h6pip"]
 [ext_resource type="AudioStream" uid="uid://wipr8dd1qxwn" path="res://SFX/den_draaiende_axe.mp3" id="4_t3nb2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_stv25"]
 size = Vector2(40, 120)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0a0w3"]
-shader = ExtResource("1_fibjx")
-shader_parameter/pixelSize = 16
 
 [node name="Lumberaxe" type="CharacterBody2D"]
 script = ExtResource("1_smxmg")
@@ -19,9 +14,7 @@ script = ExtResource("1_smxmg")
 shape = SubResource("RectangleShape2D_stv25")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_0a0w3")
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_ex025")
+texture = ExtResource("2_h6pip")
 
 [node name="SwingSwangSwung" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_t3nb2")
