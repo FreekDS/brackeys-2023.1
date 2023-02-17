@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bdjcibipcey38"]
+[gd_scene load_steps=16 format=3 uid="uid://bdjcibipcey38"]
 
 [ext_resource type="Script" path="res://Common/root.gd" id="1_ovkdd"]
 [ext_resource type="PackedScene" uid="uid://cfg6wwlys75aa" path="res://BackgroundObjects/Tree/Tree.tscn" id="3_gwbe1"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cangrqkubxjdn" path="res://UI/Button/ButtonHover.png" id="6_2ledu"]
 [ext_resource type="Texture2D" uid="uid://dxopbjd0ltrwb" path="res://UI/Button/Button.png" id="7_0pyxv"]
 [ext_resource type="Texture2D" uid="uid://cmapbgyggvw6a" path="res://UI/Button/ButtonPressed.png" id="8_qwcjf"]
+[ext_resource type="PackedScene" uid="uid://da33skjc8gqe4" path="res://InteractingObjects/Ground/Ground.tscn" id="9_1ennx"]
 [ext_resource type="Texture2D" uid="uid://25p4lwvqpybu" path="res://UI/Button/PlayButton.png" id="9_gxnq5"]
 [ext_resource type="Script" path="res://zoomCamera.gd" id="10_rejpu"]
 
@@ -69,6 +70,10 @@ scale = Vector2(0.4, 0.357)
 position = Vector2(579, 325)
 scale = Vector2(1.27336, 1.35711)
 script = ExtResource("10_rejpu")
+
+[node name="Ground" parent="Toremove" instance=ExtResource("9_1ennx")]
+z_index = -1
+position = Vector2(485, 576)
 
 [node name="Seed" type="AnimatedSprite2D" parent="Toremove"]
 texture_filter = 1
