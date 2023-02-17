@@ -15,12 +15,14 @@ noise = SubResource("FastNoiseLite_onutm")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ya2cu"]
 shader = ExtResource("1_oqmic")
 shader_parameter/cloudTreshold = 0.2
+shader_parameter/cloudDarkness = 1.0
 shader_parameter/pixelSize = 4
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_pl0f2")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kb0qu"]
 shader = ExtResource("1_oqmic")
 shader_parameter/cloudTreshold = 0.5
+shader_parameter/cloudDarkness = 1.0
 shader_parameter/pixelSize = 16
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_uj5sx"]

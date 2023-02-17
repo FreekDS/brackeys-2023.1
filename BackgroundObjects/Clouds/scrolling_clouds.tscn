@@ -6,6 +6,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jaypw"]
 shader = ExtResource("1_c7fsm")
 shader_parameter/cloudTreshold = 0.4
+shader_parameter/cloudDarkness = 1.0
 shader_parameter/pixelSize = 4
 shader_parameter/direction = Vector2(2, 1)
 shader_parameter/speedMultiplier = 0.1
@@ -27,5 +28,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = SubResource("NoiseTexture2D_ff1nj")
 stretch_mode = 1

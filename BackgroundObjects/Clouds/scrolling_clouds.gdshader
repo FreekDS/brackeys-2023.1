@@ -1,6 +1,7 @@
 shader_type canvas_item;
 
 uniform float cloudTreshold : hint_range(0.0, 1.0, 0.1) = .4;
+uniform float cloudDarkness : hint_range(0.0, 1.0, 0.1) = 1.0;
 uniform int pixelSize = 1;
 uniform vec2 direction;
 uniform float speedMultiplier = .3;
@@ -23,7 +24,7 @@ void fragment() {
 	vec2 at = vec2(grid_uv_x, grid_uv_y);
 	
 	float sample = texture(TEXTURE, at).r;
-	vec4 col = vec4(1.0,1.0,1.0,0.0);
+	vec4 col = vec4(cloudDarkness,cloudDarkness,cloudDarkness,0.0);
 	if(sample > cloudTreshold) {
 		col.a = abs(sample) * 1.3;
 	}
