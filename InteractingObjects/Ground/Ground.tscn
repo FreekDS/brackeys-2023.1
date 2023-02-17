@@ -9,7 +9,7 @@ size = Vector2(15989, 36)
 [node name="Node2D" type="Area2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(6251.5, 0)
+position = Vector2(6251.5, 28)
 shape = SubResource("RectangleShape2D_b0ugu")
 
 [node name="soil top" type="TextureRect" parent="."]
