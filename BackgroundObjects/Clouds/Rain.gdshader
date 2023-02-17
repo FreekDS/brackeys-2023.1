@@ -1,5 +1,5 @@
 shader_type canvas_item;
-
+// https://www.shadertoy.com/view/fdGfRV
 // https://www.pcg-random.org/
 uint pcg(uint v)
 {

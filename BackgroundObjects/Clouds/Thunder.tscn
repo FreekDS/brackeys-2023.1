@@ -1,19 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpjb865waa1mu"]
+[gd_scene load_steps=6 format=3 uid="uid://cpjb865waa1mu"]
 
 [ext_resource type="Shader" path="res://BackgroundObjects/Clouds/Rain.gdshader" id="1_nmnp6"]
+[ext_resource type="Script" path="res://BackgroundObjects/Clouds/Thunder.gd" id="1_qmriw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7ftsv"]
 shader = ExtResource("1_nmnp6")
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_f85wb"]
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_igi02"]
+
 [node name="Thunder" type="CanvasLayer"]
+script = ExtResource("1_qmriw")
 
 [node name="Rain" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_7ftsv")
 offset_right = 1154.0
-offset_bottom = 642.0
+offset_bottom = 650.0
 mouse_filter = 2
 texture = SubResource("PlaceholderTexture2D_f85wb")
 flip_h = true
 flip_v = true
+
+[node name="Flits" type="TextureRect" parent="."]
+visible = false
+offset_right = 1157.0
+offset_bottom = 652.0
+texture = SubResource("CanvasTexture_igi02")
