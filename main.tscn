@@ -72,7 +72,7 @@ script = ExtResource("10_rejpu")
 
 [node name="Seed" type="AnimatedSprite2D" parent="Toremove"]
 texture_filter = 1
-position = Vector2(522, 133)
+position = Vector2(446, 200)
 scale = Vector2(0.8, 0.714)
 sprite_frames = ExtResource("4_rfn85")
 animation = &"vlieg"

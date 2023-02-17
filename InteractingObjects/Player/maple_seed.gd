@@ -16,7 +16,6 @@ var marginy = 10
 var intersectCircleSize=75
 var maxArrowSize=40
 
-#var startDrag=null
 var isDragging=false
 var currentArrowPower=0
 var additionalPowerMult=4
@@ -39,7 +38,7 @@ func _input(event):
 				
 		if event.is_action_released("mouse_down") and isDragging:
 			if(arrow.visible):
-				var mousePosNomalized = get_global_mouse_position().normalized()
+				var mousePosNomalized = (get_global_mouse_position()-position).normalized()
 				velocity.x = -currentArrowPower*mousePosNomalized.x*additionalPowerMult
 				velocity.y = -currentArrowPower*mousePosNomalized.y*additionalPowerMult
 			isDragging=false
