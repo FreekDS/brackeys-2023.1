@@ -16,12 +16,14 @@ var marginy = 10
 var intersectCircleSize=75
 var maxArrowSize=40
 
-var startDrag=null
+#var startDrag=null
 var isDragging=false
 var currentArrowPower=0
 var additionalPowerMult=4
+var clickMaxDistance=100
+var enableArrowAfter=30
 
-var velocityAttrition=0.99
+var velocityAttrition=0.985
 
 
 func _process(_delta):
@@ -31,25 +33,28 @@ func _process(_delta):
 func _input(event):
 	if(enabled):
 		if event.is_action_pressed("mouse_down") and not isDragging:
-			isDragging=true
-			startDrag=get_global_mouse_position()
-			arrow.visible=true
-		if event.is_action_released("mouse_down"):
-			var mousePosNomalized = get_global_mouse_position().normalized()
-			velocity.x = -currentArrowPower*mousePosNomalized.x*additionalPowerMult
-			velocity.y = -currentArrowPower*mousePosNomalized.y*additionalPowerMult
+			var startDrag=get_global_mouse_position()
+			if(position.distance_to(startDrag)<clickMaxDistance):
+				isDragging=true
+				
+		if event.is_action_released("mouse_down") and isDragging:
+			if(arrow.visible):
+				var mousePosNomalized = get_global_mouse_position().normalized()
+				velocity.x = -currentArrowPower*mousePosNomalized.x*additionalPowerMult
+				velocity.y = -currentArrowPower*mousePosNomalized.y*additionalPowerMult
 			isDragging=false
 			arrow.visible=false
 
 func focusArrow():
 	var mousePos = get_global_mouse_position()
-	
-	var magnitude=sqrt(mousePos.x*mousePos.x+mousePos.y*mousePos.y)
-	var arrowpos=Vector2((mousePos.x/magnitude)*intersectCircleSize,(mousePos.y/magnitude)*intersectCircleSize)
+	arrow.visible=position.distance_to(mousePos)>enableArrowAfter
+	var difPos=mousePos-position
+	var magnitude=sqrt(difPos.x*difPos.x+difPos.y*difPos.y)
+	var arrowpos=Vector2((difPos.x/magnitude)*intersectCircleSize,(difPos.y/magnitude)*intersectCircleSize)
 	arrow.position=arrowpos
-	arrow.rotation=(mousePos).angle()
+	arrow.rotation=(difPos).angle()
 	
-	var diff=startDrag-mousePos
+	var diff=position-mousePos
 	var diffLength=int(sqrt(diff.x*diff.x+diff.y*diff.y))
 	currentArrowPower=clamp(4,diffLength/3,maxArrowSize)
 	arrow.setNewLength(currentArrowPower)
