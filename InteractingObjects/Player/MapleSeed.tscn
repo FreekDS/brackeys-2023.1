@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://n17n1ruijcor"]
+[gd_scene load_steps=7 format=3 uid="uid://n17n1ruijcor"]
 
 [ext_resource type="Script" path="res://InteractingObjects/Player/maple_seed.gd" id="1_nu1ni"]
 [ext_resource type="Script" path="res://InteractingObjects/Player/BuryAnimation.gd" id="3_bgg6v"]
@@ -7,6 +7,8 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57mjh"]
 size = Vector2(30, 30)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0r7fo"]
 
 [node name="MapleSeed" type="CharacterBody2D" groups=["Player"]]
 motion_mode = 1
@@ -31,5 +33,11 @@ wait_time = 0.5
 [node name="Arrow" parent="." instance=ExtResource("4_1jkwn")]
 visible = false
 scale = Vector2(3, 3)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(574.25, 325.25)
+scale = Vector2(1149.5, 651.5)
+mesh = SubResource("BoxMesh_0r7fo")
 
 [connection signal="timeout" from="AnimatedSprite2D/BuryAnimationTick" to="AnimatedSprite2D" method="animationFrame"]

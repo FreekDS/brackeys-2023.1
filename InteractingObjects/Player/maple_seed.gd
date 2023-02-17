@@ -60,24 +60,10 @@ func focusArrow():
 
 func _physics_process(_delta):
 	if enabled:
-
-		var pos = self.get_global_transform_with_canvas().origin
-		#Make velocity go to 0 over time
 		velocity=velocity*velocityAttrition
-		
-		var maximum = get_viewport().get_visible_rect().size
-		if  pos.x > (maximum.x - marginx) and velocity.x > 0:
-			velocity.x = 0
-		if pos.x < marginx and velocity.x < 0:
-			velocity.x = 0
-		if pos.y > (maximum.y-marginy) and velocity.y > 0:
-			velocity.y = 0
-		if pos.y < marginy and velocity.y < 0:
-			velocity.y = 0
-		
 		move_and_slide()
 		
-#		self.rotation_degrees+=delta*1000
+
 
 func _on_ground_hit():
 	$AnimatedSprite2D.stop()

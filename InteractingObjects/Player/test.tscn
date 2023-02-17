@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://cegokdnglkwk8"]
 
-[ext_resource type="PackedScene" uid="uid://n17n1ruijcor" path="res://InteractingObjects/Player/MapleSeed.tscn" id="1_740g7"]
+[ext_resource type="PackedScene" uid="uid://nxbmc78oblwt" path="res://InteractingObjects/Player/BoxedMapleSeed.tscn" id="1_2xhc3"]
 
 [node name="test" type="Node2D"]
 
-[node name="MapleSeed" parent="." instance=ExtResource("1_740g7")]
-
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="BoxedMapleSeed" parent="." instance=ExtResource("1_2xhc3")]

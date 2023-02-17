@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ftoghex7uce0" path="res://BackgroundObjects/Clouds/scrolling_clouds.tscn" id="3_p8hpd"]
 [ext_resource type="PackedScene" uid="uid://cfg6wwlys75aa" path="res://BackgroundObjects/Tree/Tree.tscn" id="4_hrruo"]
 [ext_resource type="PackedScene" uid="uid://da33skjc8gqe4" path="res://InteractingObjects/Ground/Ground.tscn" id="5_03k3g"]
-[ext_resource type="PackedScene" uid="uid://n17n1ruijcor" path="res://InteractingObjects/Player/MapleSeed.tscn" id="6_f7r1k"]
+[ext_resource type="PackedScene" uid="uid://nxbmc78oblwt" path="res://InteractingObjects/Player/BoxedMapleSeed.tscn" id="7_7o26x"]
 [ext_resource type="PackedScene" uid="uid://bpqs5c8pkymdr" path="res://UI/dead_screen.tscn" id="7_ydsya"]
 [ext_resource type="PackedScene" uid="uid://bok2xyi22l8aq" path="res://InteractingObjects/Lumberaxe/LumberaxeSpawner.tscn" id="8_cyi0w"]
 [ext_resource type="PackedScene" uid="uid://d23u4v2hvdw2k" path="res://UI/win_screen.tscn" id="8_iw22v"]
@@ -35,7 +35,7 @@ position = Vector2(-472, 1039)
 [node name="Tree" parent="Scrolling" instance=ExtResource("4_hrruo")]
 position = Vector2(-215, 490)
 
-[node name="MapleSeed" parent="." instance=ExtResource("6_f7r1k")]
+[node name="MapleSeed" parent="." groups=["Player"] instance=ExtResource("7_7o26x")]
 
 [node name="BirdSpawner" parent="." instance=ExtResource("2_3pf32")]
 
@@ -56,7 +56,8 @@ offset_top = -2.0
 offset_right = 15.0
 offset_bottom = 20.0
 
-[node name="VictoryManager" parent="." instance=ExtResource("12_ib8b5")]
+[node name="VictoryManager" parent="." node_paths=PackedStringArray("playerNode") instance=ExtResource("12_ib8b5")]
+playerNode = NodePath("../MapleSeed")
 
 [connection signal="body_entered" from="Scrolling/Ground" to="." method="_on_ground_body_entered"]
 [connection signal="dead" from="EndScreen/DeadScreen" to="." method="_on_dead_screen_dead"]

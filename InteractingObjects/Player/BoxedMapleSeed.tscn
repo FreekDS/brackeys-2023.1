@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://nxbmc78oblwt"]
+
+[ext_resource type="Script" path="res://InteractingObjects/Player/BoxedMapleSeed.gd" id="1_a6vps"]
+[ext_resource type="PackedScene" uid="uid://n17n1ruijcor" path="res://InteractingObjects/Player/MapleSeed.tscn" id="2_j0qu4"]
+
+[node name="BoxedMapleSeed" type="Node2D"]
+script = ExtResource("1_a6vps")
+
+[node name="MapleSeed" parent="." instance=ExtResource("2_j0qu4")]
+
+[node name="KooiLeftUp" type="Node2D" parent="."]
+position = Vector2(-550, -300)
+
+[node name="KooiRightDown" type="Node2D" parent="."]
+position = Vector2(550, 300)
+
+[node name="Camera2D" type="Camera2D" parent="."]

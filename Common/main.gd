@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var characterNode=$MapleSeed
+@onready var characterNode=$MapleSeed/MapleSeed
 @onready var dedlmaoScreen= $EndScreen/DeadScreen
 @onready var winlmaoScreen= $EndScreen/WinScreen
 @onready var birdSpawner= $BirdSpawner
