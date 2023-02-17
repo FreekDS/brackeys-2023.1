@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dlmo4waiexr4b"]
+[gd_scene load_steps=13 format=3 uid="uid://dlmo4waiexr4b"]
 
 [ext_resource type="Script" path="res://Common/main.gd" id="1_7v3cp"]
 [ext_resource type="PackedScene" uid="uid://fd7dcfgy88hs" path="res://InteractingObjects/Bird/BirdSpawner.tscn" id="2_3pf32"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bpqs5c8pkymdr" path="res://UI/dead_screen.tscn" id="7_ydsya"]
 [ext_resource type="PackedScene" uid="uid://bok2xyi22l8aq" path="res://InteractingObjects/Lumberaxe/LumberaxeSpawner.tscn" id="8_cyi0w"]
 [ext_resource type="PackedScene" path="res://UI/win_screen.tscn" id="8_iw22v"]
+[ext_resource type="PackedScene" uid="uid://cu2r751bje6jd" path="res://Common/victory_manager.tscn" id="12_ib8b5"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_7v3cp")
@@ -55,6 +56,8 @@ offset_left = -1.0
 offset_top = -2.0
 offset_right = 15.0
 offset_bottom = 20.0
+
+[node name="VictoryManager" parent="." instance=ExtResource("12_ib8b5")]
 
 [connection signal="body_entered" from="Scrolling/Ground" to="." method="_on_ground_body_entered"]
 [connection signal="dead" from="EndScreen/DeadScreen" to="." method="_on_dead_screen_dead"]

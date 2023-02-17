@@ -29,6 +29,7 @@ func _on_ground_body_entered(body):
 	if body == characterNode:
 		gamePlaying = false
 		$Scrolling.stopGame()
+		$ScrollingClouds.setScrollSpeed(0)
 		characterNode.stopGame()
 		winlmaoScreen.visible=true
 		winlmaoScreen.play()

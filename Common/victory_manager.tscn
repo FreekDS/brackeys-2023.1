@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu2r751bje6jd"]
+
+[ext_resource type="Script" path="res://Common/victory_manager.gd" id="1_5q4fe"]
+[ext_resource type="PackedScene" uid="uid://dmm6nlf25d2ip" path="res://UI/Timelapse/timelapse_overlay.tscn" id="2_wvadl"]
+
+[node name="VictoryManager" type="Node2D"]
+script = ExtResource("1_5q4fe")
+
+[node name="DEBUG" type="Camera2D" parent="."]
+
+[node name="DesiredSeedLocation (1)" type="Marker2D" parent="."]
+position = Vector2(0, 250)
+
+[node name="DesiredTreeLocationOnGameStart (3)" type="Marker2D" parent="."]
+position = Vector2(-400, 800)
+
+[node name="SeedLocation (4)" type="Marker2D" parent="."]
+position = Vector2(-350, -200)
+
+[node name="timelapse_overlay" parent="." instance=ExtResource("2_wvadl")]

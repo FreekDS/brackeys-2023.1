@@ -3,6 +3,7 @@ extends CanvasLayer
 @export var animated = false
 
 @export var timeBetweenMovement = 1.0	#seconds
+@export var fluffyNessIncrease = .2
 
 @onready var cloudRect = $ColorRect
 var pixelOffset

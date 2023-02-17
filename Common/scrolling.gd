@@ -8,7 +8,7 @@ var active = true
 
 func _physics_process(delta):
 	if active:
-		self.position=self.position-Vector2(2*delta*speed,delta*speed)
+		self.position -= Vector2(1.5*delta*speed,delta*speed/1.5)
 		
 
 func stopGame():

@@ -149,7 +149,7 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_top = -70.0
-offset_right = 11520.0
+offset_right = 12672.0
 grow_horizontal = 2
 color = Color(0, 0, 0, 1)
 
@@ -160,7 +160,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 648.0
-offset_right = 11520.0
+offset_right = 12672.0
 offset_bottom = 718.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -171,7 +171,6 @@ position = Vector2(1055, -80)
 scale = Vector2(2, 2)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Start"
 libraries = {
 "": SubResource("AnimationLibrary_5gpek")
 }
