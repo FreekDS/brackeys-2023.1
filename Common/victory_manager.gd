@@ -25,3 +25,4 @@ extends Node2D
 @export var scrollingObjects : Node2D	# Dees is de Node die alle objecten bevat die scrollen ("scrolling" in main)
 @export var playerNode : Node2D
 
+@onready var timelapseOverlay = $timelapse_overlay as TimelapseOverlay

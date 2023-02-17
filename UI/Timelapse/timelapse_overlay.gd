@@ -1,3 +1,5 @@
+class_name TimelapseOverlay
+
 extends CanvasLayer
 
 @onready var animations := $AnimationPlayer
