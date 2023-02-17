@@ -32,9 +32,7 @@ speed = 50
 z_index = 1
 position = Vector2(-472, 1039)
 
-[node name="NonCollsionObjects" type="Node2D" parent="Scrolling"]
-
-[node name="Tree" parent="Scrolling/NonCollsionObjects" instance=ExtResource("4_hrruo")]
+[node name="Tree" parent="Scrolling" instance=ExtResource("4_hrruo")]
 position = Vector2(-215, 490)
 
 [node name="MapleSeed" parent="." instance=ExtResource("6_f7r1k")]
