@@ -23,7 +23,6 @@ scale = Vector2(2, 2)
 sprite_frames = ExtResource("5_kuj3j")
 animation = &"vlieg"
 autoplay = "vlieg"
-speed_scale = 0.0
 script = ExtResource("3_bgg6v")
 
 [node name="BuryAnimationTick" type="Timer" parent="AnimatedSprite2D"]

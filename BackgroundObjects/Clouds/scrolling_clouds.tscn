@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://ftoghex7uce0"]
+
+[ext_resource type="Shader" path="res://BackgroundObjects/Clouds/scrolling_clouds.gdshader" id="1_c7fsm"]
+[ext_resource type="Script" path="res://BackgroundObjects/Clouds/scrolling_clouds.gd" id="1_fk7xj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jaypw"]
+shader = ExtResource("1_c7fsm")
+shader_parameter/cloudTreshold = 0.4
+shader_parameter/pixelSize = 4
+shader_parameter/direction = Vector2(2, 1)
+shader_parameter/speedMultiplier = 0.1
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2q6ga"]
+frequency = 0.005
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ff1nj"]
+seamless = true
+noise = SubResource("FastNoiseLite_2q6ga")
+
+[node name="ScrollingClouds" type="CanvasLayer"]
+script = ExtResource("1_fk7xj")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_jaypw")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_ff1nj")
+stretch_mode = 1

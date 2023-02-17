@@ -1,14 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://da33skjc8gqe4"]
+[gd_scene load_steps=4 format=3 uid="uid://da33skjc8gqe4"]
 
-[ext_resource type="Shader" path="res://Common/pixelate.gdshader" id="1_dfvxi"]
-[ext_resource type="Texture2D" uid="uid://bdkl00f3f5vyt" path="res://InteractingObjects/Ground/ground.jpg" id="2_yhsuy"]
+[ext_resource type="Texture2D" uid="uid://y06a32gi1d3a" path="res://InteractingObjects/Ground/soil.png" id="1_7y6y4"]
+[ext_resource type="Texture2D" uid="uid://bcp2mfn2f3maw" path="res://InteractingObjects/Ground/soil_notop.png" id="2_waxqt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0ugu"]
 size = Vector2(15989, 36)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3fyfg"]
-shader = ExtResource("1_dfvxi")
-shader_parameter/pixelSize = 16
 
 [node name="Node2D" type="Area2D"]
 
@@ -16,21 +12,21 @@ shader_parameter/pixelSize = 16
 position = Vector2(6251.5, 0)
 shape = SubResource("RectangleShape2D_b0ugu")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_3fyfg")
-offset_left = -2652.0
-offset_top = -14.0
-offset_right = 2674.0
-offset_bottom = 867.0
-texture = ExtResource("2_yhsuy")
+[node name="soil top" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = -4000.0
+offset_right = 3.0
+offset_bottom = 32.0
+scale = Vector2(3, 3)
+texture = ExtResource("1_7y6y4")
 stretch_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="TextureRect"]
-material = SubResource("ShaderMaterial_3fyfg")
-layout_mode = 0
-offset_left = 5314.0
-offset_top = 1.0
-offset_right = 10640.0
-offset_bottom = 882.0
-texture = ExtResource("2_yhsuy")
+[node name="soil bot" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = -4000.0
+offset_top = 96.0
+offset_right = 3.0
+offset_bottom = 583.0
+scale = Vector2(3, 3)
+texture = ExtResource("2_waxqt")
 stretch_mode = 1

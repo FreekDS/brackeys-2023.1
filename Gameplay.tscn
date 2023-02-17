@@ -1,20 +1,24 @@
-[gd_scene load_steps=11 format=3 uid="uid://dlmo4waiexr4b"]
+[gd_scene load_steps=12 format=3 uid="uid://dlmo4waiexr4b"]
 
 [ext_resource type="Script" path="res://Common/main.gd" id="1_7v3cp"]
 [ext_resource type="PackedScene" uid="uid://fd7dcfgy88hs" path="res://InteractingObjects/Bird/BirdSpawner.tscn" id="2_3pf32"]
 [ext_resource type="PackedScene" uid="uid://da0gy62kqyiky" path="res://BackgroundObjects/Clouds/cloud_background.tscn" id="2_hgd1f"]
 [ext_resource type="Script" path="res://Common/scrolling.gd" id="3_m0q01"]
+[ext_resource type="PackedScene" uid="uid://ftoghex7uce0" path="res://BackgroundObjects/Clouds/scrolling_clouds.tscn" id="3_p8hpd"]
 [ext_resource type="PackedScene" uid="uid://cfg6wwlys75aa" path="res://BackgroundObjects/Tree/Tree.tscn" id="4_hrruo"]
 [ext_resource type="PackedScene" uid="uid://da33skjc8gqe4" path="res://InteractingObjects/Ground/Ground.tscn" id="5_03k3g"]
 [ext_resource type="PackedScene" uid="uid://n17n1ruijcor" path="res://InteractingObjects/Player/MapleSeed.tscn" id="6_f7r1k"]
 [ext_resource type="PackedScene" uid="uid://bpqs5c8pkymdr" path="res://UI/dead_screen.tscn" id="7_ydsya"]
 [ext_resource type="PackedScene" uid="uid://bok2xyi22l8aq" path="res://InteractingObjects/Lumberaxe/LumberaxeSpawner.tscn" id="8_cyi0w"]
-[ext_resource type="PackedScene" uid="uid://d23u4v2hvdw2k" path="res://UI/win_screen.tscn" id="8_iw22v"]
+[ext_resource type="PackedScene" path="res://UI/win_screen.tscn" id="8_iw22v"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_7v3cp")
 
 [node name="Clouds" parent="." instance=ExtResource("2_hgd1f")]
+
+[node name="ScrollingClouds" parent="." instance=ExtResource("3_p8hpd")]
+layer = -1
 
 [node name="PlayerCam" type="Camera2D" parent="."]
 scale = Vector2(1.3526, 1.43822)
@@ -29,7 +33,7 @@ position = Vector2(-472, 1039)
 [node name="NonCollsionObjects" type="Node2D" parent="Scrolling"]
 
 [node name="Tree" parent="Scrolling/NonCollsionObjects" instance=ExtResource("4_hrruo")]
-position = Vector2(-215, 436)
+position = Vector2(-215, 490)
 
 [node name="MapleSeed" parent="." instance=ExtResource("6_f7r1k")]
 

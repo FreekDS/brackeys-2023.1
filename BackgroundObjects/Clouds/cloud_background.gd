@@ -17,6 +17,9 @@ func _ready():
 		timer.timeout.connect(animationTick)
 		add_child(timer)
 		timer.start(timeBetweenMovement)
+	var n = cloudRect.material.get_shader_parameter("noise_texture")
+	n.noise.seed = randi()
+	cloudRect.material.set_shader_parameter("noise_texture", n)
 		
 
 func animationTick():
