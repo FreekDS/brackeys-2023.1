@@ -22,7 +22,6 @@ var loseSceneInstance=null
 
 func _ready():
 	restartLevel()
-	_on_game_lost()
 
 signal mouseClicked
 signal treeHitFrame
