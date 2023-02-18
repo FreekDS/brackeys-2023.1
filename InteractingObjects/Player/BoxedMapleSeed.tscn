@@ -9,9 +9,9 @@ script = ExtResource("1_a6vps")
 [node name="MapleSeed" parent="." instance=ExtResource("2_j0qu4")]
 
 [node name="KooiLeftUp" type="Node2D" parent="."]
-position = Vector2(-550, -300)
+position = Vector2(-525, -275)
 
 [node name="KooiRightDown" type="Node2D" parent="."]
-position = Vector2(550, 300)
+position = Vector2(525, 275)
 
 [connection signal="seedBuried" from="MapleSeed" to="." method="_on_maple_seed_seed_buried"]
