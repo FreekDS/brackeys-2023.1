@@ -14,6 +14,7 @@ script = ExtResource("1_snl3j")
 player = NodePath("Marker2D")
 
 [node name="Lumberaxe" parent="." node_paths=PackedStringArray("Start", "End") instance=ExtResource("1_7vln3")]
+visible = false
 position = Vector2(31, 624)
 Start = NodePath("../Startposition")
 End = NodePath("../Endposition")

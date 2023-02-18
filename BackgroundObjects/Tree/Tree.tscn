@@ -16,7 +16,7 @@ texture = ExtResource("1_ukde4")
 [node name="Partikles" type="Node2D" parent="."]
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Partikles"]
-position = Vector2(-210, -408)
+position = Vector2(-156, -175)
 scale = Vector2(5, 5)
 speed_scale = 0.2
 randomness = 1.0
@@ -30,7 +30,7 @@ initial_velocity_min = 25.0
 initial_velocity_max = 149.04
 
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="Partikles"]
-position = Vector2(-311, -204)
+position = Vector2(-165, -35)
 scale = Vector2(7, 7)
 speed_scale = 0.2
 randomness = 1.0
@@ -44,54 +44,9 @@ initial_velocity_min = 25.0
 initial_velocity_max = 149.04
 
 [node name="CPUParticles2D3" type="CPUParticles2D" parent="Partikles"]
-position = Vector2(-308, 189)
+position = Vector2(21, -152)
 rotation = -7.31793e-05
 scale = Vector2(8, 8)
-speed_scale = 0.2
-randomness = 1.0
-lifetime_randomness = 0.32
-local_coords = true
-texture = ExtResource("3_f38io")
-direction = Vector2(-1, -1)
-spread = 180.0
-gravity = Vector2(-200, 200)
-initial_velocity_min = 25.0
-initial_velocity_max = 149.04
-
-[node name="CPUParticles2D4" type="CPUParticles2D" parent="Partikles"]
-position = Vector2(147, -368)
-rotation = -7.31793e-05
-scale = Vector2(5, 5)
-speed_scale = 0.2
-randomness = 1.0
-lifetime_randomness = 0.32
-local_coords = true
-texture = ExtResource("3_f38io")
-direction = Vector2(-1, -1)
-spread = 180.0
-gravity = Vector2(-200, 200)
-initial_velocity_min = 25.0
-initial_velocity_max = 149.04
-
-[node name="CPUParticles2D5" type="CPUParticles2D" parent="Partikles"]
-position = Vector2(246, -215)
-rotation = -7.31793e-05
-scale = Vector2(5, 5)
-speed_scale = 0.2
-randomness = 1.0
-lifetime_randomness = 0.32
-local_coords = true
-texture = ExtResource("3_f38io")
-direction = Vector2(-1, -1)
-spread = 180.0
-gravity = Vector2(-200, 200)
-initial_velocity_min = 25.0
-initial_velocity_max = 149.04
-
-[node name="CPUParticles2D6" type="CPUParticles2D" parent="Partikles"]
-position = Vector2(331, 154)
-rotation = -7.31793e-05
-scale = Vector2(4, 4)
 speed_scale = 0.2
 randomness = 1.0
 lifetime_randomness = 0.32

@@ -13,6 +13,7 @@ signal collide
 
 func startThrowAtPlayer():
 	# Play scream animation
+	$Lumberaxe.visible=true
 	$Lumberaxe.throwAtPlayer(player.position)
 	# On scream end, start throw
 

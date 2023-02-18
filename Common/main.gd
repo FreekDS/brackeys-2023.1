@@ -62,26 +62,24 @@ func triggerRandomObjectSpawnTick():
 #	print("trigger")
 	#Blijkt dat ge niet wilt dat axe en bird hetzelfde random nummer gebruikt, want dan komen ze alt tegelijk
 	rng.randomize()
-	var numberBird = rng.randi_range(1,100)
+	var numberBird = rng.randi_range(0,100)
 	rng.randomize()
-	var numberAxe = rng.randi_range(1,100)
+	var numberAxe = rng.randi_range(0,100)
 	
 	#Level  is birds only (at increased rate), level 2 is axe only (at increased rate), from then it is both at gradually increasing ods
 	var birdChance=0
 	if difficultyLevel==1:
 		birdChance=10
 	if difficultyLevel>2:
-		birdChance=5+(difficultyLevel-3)*5
+		birdChance=5+((difficultyLevel-3)*5)
 		
 		
 	var axeChance=0
 	if difficultyLevel==2:
 		axeChance=10
 	if difficultyLevel>2:
-		axeChance=5+(difficultyLevel-3)*5
+		axeChance=5+((difficultyLevel-3)*5)
 		
-	print("b"+str(birdChance))
-	print("a"+str(axeChance))
 	if numberBird<birdChance and gamePlaying:
 		birdSpawner.vliegVogeltjeVlieg()
 	##Only do axes from level 2
