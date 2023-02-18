@@ -87,8 +87,12 @@ func startGame():
 	gamePlaying = true
 	RandomObjectSpawnTimer.start(5)
 	$Clouds.visible = true
-	$ScrollingClouds.visible = true
-
+	$ScrollingClods.visible = true
+	
+#used to hide the player node on death (where another animation will be played)
+func hidePlayer():
+	$MapleSeed.visible=false
+	
 func hitTree():
 	$Scrolling/Tree.hitMe()
 	

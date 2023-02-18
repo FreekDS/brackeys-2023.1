@@ -18,7 +18,7 @@ var currentGradient = gradients[0]
 var nextGradient = gradients[0]
 
 var loseSceneInstance=null
-
+var activeGameInstance : GamePlay=null
 
 func _ready():
 	restartLevel()
@@ -41,21 +41,21 @@ func restartLevel():
 	removeGameplay()
 	
 	# Create new game instance
-	var gameInstance : GamePlay = actualGameScene.instantiate() as GamePlay
-	gameInstance.name = "GAMEPLAY"
-	gameInstance.difficultyLevel = currentDifficultyLevel
-	gameInstance.win.connect(_on_game_ground_reached)
-	gameInstance.dead.connect(_on_game_lost)
-	gameInstance.setCurrentGradient(currentGradient)
-	gameInstance.setNextGradient(nextGradient)
-	treeHitFrame.connect(gameInstance.hitTree)
+	activeGameInstance = actualGameScene.instantiate() as GamePlay
+	activeGameInstance.name = "GAMEPLAY"
+	activeGameInstance.difficultyLevel = currentDifficultyLevel
+	activeGameInstance.win.connect(_on_game_ground_reached)
+	activeGameInstance.dead.connect(_on_game_lost)
+	activeGameInstance.setCurrentGradient(currentGradient)
+	activeGameInstance.setNextGradient(nextGradient)
+	treeHitFrame.connect(activeGameInstance.hitTree)
 	
 	# Start game
-	add_child(gameInstance)
+	add_child(activeGameInstance)
 	animations.animation_finished.connect(
 		func(_a): 
 #			pass,
-			waitAndStart(gameInstance),
+			waitAndStart(activeGameInstance),
 		CONNECT_ONE_SHOT
 	)
 	animations.play("fade_out")
@@ -130,13 +130,20 @@ func _on_game_lost(reason: Death.REASON = Death.REASON.UNKNOWN):
 	
 	# Start de death animaties + ga terug naar start, je krijgt geen 2 miljoen
 	
+	#Wait 3 sec after game loss to play lose animations
+	activeGameInstance.hidePlayer()
+	get_tree().create_timer(3).timeout.connect(
+		func(): 
+			removeGameplay()
+			loseSceneInstance=loseScene.instantiate()
+			loseSceneInstance.setScore(currentIteration)
+			add_child(loseSceneInstance)
+			loseSceneInstance.connect("restart",restartAfterLose)
+			print("Stukske loser"),
+		CONNECT_ONE_SHOT
+	)
 	# Als de animaties klaar zijn, dan moogt ge terug naar main menu
-	removeGameplay()
-	loseSceneInstance=loseScene.instantiate()
-	loseSceneInstance.setScore(currentIteration)
-	add_child(loseSceneInstance)
-	loseSceneInstance.connect("restart",restartAfterLose)
-	print("Stukske loser")
+	
 	
 func hitTree():
 	treeHitFrame.emit()

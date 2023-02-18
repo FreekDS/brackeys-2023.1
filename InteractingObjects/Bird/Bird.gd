@@ -26,6 +26,9 @@ func start():
 	$AnimationPlayer.play("koppeke")
 
 func _ready():
+	#Should already be false, but just to be sure
+	$BirbPlaceholder/AnimatedSprite2DL.visible=false
+	$BirbPlaceholder/AnimatedSprite2DR.visible=false
 	randomizePitch()
 
 
@@ -68,6 +71,11 @@ func _physics_process(delta):
 		var collision = move_and_collide(velocity)
 		if collision and collision.get_collider().is_in_group("Player"):
 			emit_signal("collide")
+			if sprite.flip_h:
+				$BirbPlaceholder/AnimatedSprite2DR.visible=true
+			else:
+				$BirbPlaceholder/AnimatedSprite2DL.visible=true
+				
 			$CollisionShape2D.disabled = true
 
 func stopVogelken():
