@@ -6,7 +6,7 @@ extends CharacterBody2D
 
 @onready var arrow=$Arrow
 
-var enabled = true
+var enabled = false
 
 var margin = Vector2(25, 10)
 
@@ -23,6 +23,20 @@ var clickMaxDistance=100
 var enableArrowAfter=30
 
 var velocityAttrition=0.985
+
+signal seedBuried
+
+
+func _ready():
+	GameState.stateChanged.connect(
+		func(to: GameState.STATE):
+			match to:
+				GameState.STATE.PLAYING:
+					$AnimatedSprite2D.play("vlieg")
+					enabled = true
+				GameState.STATE.STOPPED:
+					$AnimatedSprite2D.stop()
+	)
 
 
 func _process(_delta):
@@ -62,15 +76,17 @@ func _physics_process(_delta):
 	if enabled:
 		velocity=velocity*velocityAttrition
 		move_and_slide()
-		
 
-
-func _on_ground_hit():
+func stopGame():
 	$AnimatedSprite2D.stop()
 	$AnimatedSprite2D.frame = 0
 	velocity = Vector2.ZERO
 	enabled = false
+	
+func playBuryAnimation():
+	$AnimatedSprite2D.bury_me()
+	pass
 
-func stopGame():
-	velocity = Vector2(0,0)
-	enabled = false
+
+func _on_animated_sprite_2d_completely_buried():
+	seedBuried.emit()

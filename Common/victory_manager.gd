@@ -1,3 +1,4 @@
+class_name VictoryManager
 extends Node2D
 
 # de manier waarop ik dit wil laten werken
@@ -22,21 +23,51 @@ extends Node2D
 # Misschien gaan de posities wel nimeer kloppen van zodra deze node toegevoegd wordt in de scene
 # Who knows, mijn eerste testen zeiden van ni
 
-@export var scrollingObjects : Node2D	# Dees is de Node die alle objecten bevat die scrollen ("scrolling" in main)
+@export var scrollingObjects : Scrolling	# Dees is de Node die alle objecten bevat die scrollen ("scrolling" in main)
 @export var playerNode : Player
 
 @onready var timelapseOverlay = $timelapse_overlay as TimelapseOverlay
 @onready var desiredSeedLocation = $"DesiredSeedLocation (1)"
+@onready var treeAnimations = $AnimationPlayer
 
 func _ready():
 	if scrollingObjects != null:
 		scrollingObjects.scrollDistanceDone.connect(_on_scroll_complete)
+	if playerNode != null:
+		playerNode.buried.connect(_on_player_buried)
 
+signal victoryAnimationsCompleted
 
 func start():
+	playerNode.stopGame()
 	var scrollDistance = desiredSeedLocation.position - playerNode.getSeedPos()
 	scrollingObjects.scrollAlongDistance(scrollDistance)
 
 
 func _on_scroll_complete():
+	scrollingObjects.scrollDistanceDone.disconnect(_on_scroll_complete)
 	print("Flink gedaan :)")
+	get_tree().create_timer(.2).timeout.connect(
+		func():
+			playerNode.playBuryAnimation()
+	)
+	
+	
+func _on_player_buried():
+	print("Vlug belt den begrafenisondernemer, hem is begraven")
+	
+	# start timelapse
+	timelapseOverlay.start()
+	treeAnimations.play("growtree")
+
+
+func _on_animation_player_animation_finished(_anim_name):
+	timelapseOverlay.stop()
+	timelapseOverlay.timelapseStopped.connect(
+		func():
+			get_tree().create_timer(1).timeout.connect(
+				func(): victoryAnimationsCompleted.emit(),
+				CONNECT_ONE_SHOT
+			),
+		CONNECT_ONE_SHOT
+	)

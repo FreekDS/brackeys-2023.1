@@ -33,7 +33,7 @@ func _ready():
 	bottomRightPoint = $target.position
 	screenOffset.x = ProjectSettings.get("display/window/size/viewport_width") / 2
 	screenOffset.y = ProjectSettings.get("display/window/size/viewport_height") / 2
-	vliegVogeltjeVlieg()
+#	vliegVogeltjeVlieg()
 
 
 func vliegVogeltjeVlieg():

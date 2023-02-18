@@ -14,4 +14,4 @@ position = Vector2(-550, -300)
 [node name="KooiRightDown" type="Node2D" parent="."]
 position = Vector2(550, 300)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[connection signal="seedBuried" from="MapleSeed" to="." method="_on_maple_seed_seed_buried"]

@@ -2,12 +2,20 @@ extends Node2D
 
 @export var actualGameScene = preload("res://Gameplay.tscn")
 
+@onready var animations = $AnimationPlayer
+
 var currentIteration = 0
 var currentDifficultyLevel = 0
+var waitForClick = false
 
 func _ready():
 	restartLevel()
 
+signal mouseClicked
+
+func _input(event):
+	if event.is_action_pressed("mouse_down") and waitForClick:
+		mouseClicked.emit()
 
 func restartLevel():
 	currentIteration += 1
@@ -24,7 +32,20 @@ func restartLevel():
 	
 	# Start game
 	add_child(gameInstance)
-	gameInstance.startGame()
+	animations.animation_finished.connect(
+		func(_a): 
+#			pass,
+			waitAndStart(gameInstance, 5),
+		CONNECT_ONE_SHOT
+	)
+	animations.play("fade_out")
+
+
+func waitAndStart(game, time=2):
+	get_tree().create_timer(time).timeout.connect(
+		func(): GameState.change(GameState.STATE.PLAYING),
+		CONNECT_ONE_SHOT
+	)
 
 func removeGameplay():
 	var gamePlay = get_node_or_null("GAMEPLAY")
@@ -39,12 +60,30 @@ func _on_game_ground_reached():
 	print("Stukske winnaar")
 	
 	# Start de victory animaties, nen welgemeende proficiat
-	
+	waitForClick = true
+	$ClickToContinue.visible = true
+	mouseClicked.connect(
+		func(): 
+			restartGracefully()
+			waitForClick = false
+			$ClickToContinue.visible = false,
+		CONNECT_ONE_SHOT
+	)
 	# Als animaties klaar zijn dan moogt ge herstarten
-	removeGameplay()
+	
 
+func restartGracefully():
+	animations.animation_finished.connect(
+		func(_anim):
+			get_tree().create_timer(1).timeout.connect(
+				func():
+					restartLevel()
+			),
+		CONNECT_ONE_SHOT
+	)
+	animations.play_backwards("fade_out")
 
-func _on_game_lost(reaon: Death.REASON = Death.REASON.UNKNOWN):
+func _on_game_lost(reason: Death.REASON = Death.REASON.UNKNOWN):
 	$GAMEPLAY.stopGame()
 	
 	# Start de death animaties + ga terug naar start, je krijgt geen 2 miljoen

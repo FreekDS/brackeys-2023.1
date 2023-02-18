@@ -24,7 +24,6 @@ texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("5_kuj3j")
 animation = &"vlieg"
-autoplay = "vlieg"
 script = ExtResource("3_bgg6v")
 
 [node name="BuryAnimationTick" type="Timer" parent="AnimatedSprite2D"]
@@ -40,4 +39,5 @@ position = Vector2(574.25, 325.25)
 scale = Vector2(1149.5, 651.5)
 mesh = SubResource("BoxMesh_0r7fo")
 
+[connection signal="completely_buried" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_completely_buried"]
 [connection signal="timeout" from="AnimatedSprite2D/BuryAnimationTick" to="AnimatedSprite2D" method="animationFrame"]

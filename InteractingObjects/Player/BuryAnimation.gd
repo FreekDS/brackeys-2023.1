@@ -9,15 +9,11 @@ const textureHeight = 8
 signal completely_buried
 
 func bury_me():
+	stop()
 	$BuryAnimationTick.start()
-
-#func _input(event):
-#	if event.is_action_pressed("ui_accept"):
-#		bury_me()
 
 func animationFrame():
 	var xDelta = -pixelSize if zig else pixelSize
-	$GPUParticles2D.emitting = true
 	zig = !zig
 	position.x += xDelta
 	position.y += pixelSize

@@ -5,9 +5,20 @@ extends Node2D
 @export var speed : int = 1000
 @export var PlayerScene : Node2D
 
-var active = true
+var active = false
 
 signal scrollDistanceDone
+
+
+func _ready():
+	GameState.stateChanged.connect(
+		func(to: GameState.STATE):
+			match to:
+				GameState.STATE.PLAYING:
+					active = true
+				GameState.STATE.STOPPED:
+					active = false
+	)
 
 func _physics_process(delta):
 	if active:
@@ -15,8 +26,7 @@ func _physics_process(delta):
 
 
 func scrollAlongDistance(distanceXY):
-#	print("They see me scrolling, they hating")
-	const SCROLL_TIME = 1
+	print("They see me scrolling, they hating")
 	var tween = create_tween()
 	tween.set_parallel(true)
 	tween.set_trans(Tween.TRANS_LINEAR)

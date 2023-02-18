@@ -9,7 +9,7 @@ shader_parameter/cloudTreshold = 0.4
 shader_parameter/cloudDarkness = 0.8
 shader_parameter/pixelSize = 4
 shader_parameter/direction = Vector2(2, 1)
-shader_parameter/speedMultiplier = 0.1
+shader_parameter/speedMultiplier = 0.0
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2q6ga"]
 frequency = 0.005
@@ -19,6 +19,7 @@ seamless = true
 noise = SubResource("FastNoiseLite_2q6ga")
 
 [node name="ScrollingClouds" type="CanvasLayer"]
+visible = false
 script = ExtResource("1_fk7xj")
 
 [node name="TextureRect" type="TextureRect" parent="."]

@@ -6,6 +6,7 @@ extends Node2D
 @onready var winlmaoScreen= $EndScreen/WinScreen
 @onready var birdSpawner= $BirdSpawner
 @onready var lumberaxeSpawner = $LumberaxeSpawner
+@onready var victoryManager = $VictoryManager as VictoryManager
 
 @export var difficultyLevel = 0
 
@@ -23,11 +24,24 @@ signal win
 signal dead
 
 func _ready():
+	GameState.stateChanged.connect(_on_gameState_changed)
 	RandomObjectSpawnTimer=Timer.new()
 	RandomObjectSpawnTimer.connect("timeout", triggerRandomObjectSpawnTick)
 	RandomObjectSpawnTimer.set_one_shot(false)
 	add_child(RandomObjectSpawnTimer)
 	birdSpawner.connect("collide",lose)
+	victoryManager.victoryAnimationsCompleted.connect(
+		func(): win.emit()
+	)
+	
+
+func _on_gameState_changed(to: GameState.STATE):
+	match to:
+		GameState.STATE.PLAYING:
+			gamePlaying = true
+		GameState.STATE.STOPPED:
+			gamePlaying = false
+
 
 func _on_ground_body_entered(body):
 	if body == characterNode:
@@ -66,7 +80,6 @@ func _on_dead_screen_dead():
 
 func stopGame():
 	gamePlaying = false
-	$Clouds.visible = false
 	$ScrollingClouds.visible = false
 	$ScrollingClouds.setScrollSpeed(0)
 
