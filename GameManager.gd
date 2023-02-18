@@ -8,10 +8,13 @@ var currentIteration = 0
 var currentDifficultyLevel = 0
 var waitForClick = false
 
+
+
 func _ready():
 	restartLevel()
 
 signal mouseClicked
+signal treeHitFrame
 
 func _input(event):
 	if event.is_action_pressed("mouse_down") and waitForClick:
@@ -29,6 +32,7 @@ func restartLevel():
 	gameInstance.difficultyLevel = currentDifficultyLevel
 	gameInstance.win.connect(_on_game_ground_reached)
 	gameInstance.dead.connect(_on_game_lost)
+	treeHitFrame.connect(gameInstance.hitTree)
 	
 	# Start game
 	add_child(gameInstance)
@@ -42,10 +46,24 @@ func restartLevel():
 
 
 func waitAndStart(game, time=2):
-	get_tree().create_timer(time).timeout.connect(
-		func(): GameState.change(GameState.STATE.PLAYING),
+	animations.animation_finished.connect(
+		tree_falling,
 		CONNECT_ONE_SHOT
 	)
+	get_tree().create_timer(time).timeout.connect(
+		func(): animations.play("hak"),
+		CONNECT_ONE_SHOT
+	)
+
+func tree_falling(_a):
+	GameState.change(GameState.STATE.PLAYING)
+	get_tree().create_timer(3).timeout.connect(
+		func(): 
+			$AnimationPlayer/chop2.play()
+			$AnimationPlayer/treefalls.play(),
+		CONNECT_ONE_SHOT
+	)
+	
 
 func removeGameplay():
 	var gamePlay = get_node_or_null("GAMEPLAY")
@@ -84,7 +102,7 @@ func restartGracefully():
 	animations.play_backwards("fade_out")
 
 func _on_game_lost(reason: Death.REASON = Death.REASON.UNKNOWN):
-	$GAMEPLAY.stopGame()
+	GameState.change(GameState.STATE.STOPPED)
 	
 	# Start de death animaties + ga terug naar start, je krijgt geen 2 miljoen
 	
@@ -92,4 +110,6 @@ func _on_game_lost(reason: Death.REASON = Death.REASON.UNKNOWN):
 	removeGameplay()
 	print("Stukske loser")
 	
+func hitTree():
+	treeHitFrame.emit()
 	

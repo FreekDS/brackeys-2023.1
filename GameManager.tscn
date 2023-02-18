@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cihyie8mvt3ey"]
+[gd_scene load_steps=9 format=3 uid="uid://cihyie8mvt3ey"]
 
 [ext_resource type="Script" path="res://GameManager.gd" id="1_iuiwe"]
 [ext_resource type="FontFile" uid="uid://25m1cxomhe6y" path="res://Common/thin_pixel-7.ttf" id="2_yoxb2"]
+[ext_resource type="AudioStream" uid="uid://b0v3v5w4iu3gy" path="res://InteractingObjects/chop.wav" id="3_6jgim"]
+[ext_resource type="AudioStream" uid="uid://dgnl1on87dggv" path="res://SFX/treeeeeeeeee-falliing.mp3" id="4_d4ybv"]
 
 [sub_resource type="Animation" id="Animation_j4mpn"]
 length = 0.001
@@ -57,10 +59,65 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_ejf1o"]
+resource_name = "hak"
+length = 5.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.1, 2.5, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"hitTree"
+}, {
+"args": [],
+"method": &"hitTree"
+}, {
+"args": [],
+"method": &"hitTree"
+}, {
+"args": [],
+"method": &"hitTree"
+}]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/chop")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_6jgim")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_6jgim")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_6jgim")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_6jgim")
+}],
+"times": PackedFloat32Array(1.1, 2.5, 4, 5)
+}
+tracks/1/use_blend = true
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b4l1y"]
 _data = {
 "RESET": SubResource("Animation_j4mpn"),
-"fade_out": SubResource("Animation_p3gfl")
+"fade_out": SubResource("Animation_p3gfl"),
+"hak": SubResource("Animation_ejf1o")
 }
 
 [node name="GameManager" type="Node2D"]
@@ -102,3 +159,12 @@ scroll_active = false
 libraries = {
 "": SubResource("AnimationLibrary_b4l1y")
 }
+
+[node name="chop" type="AudioStreamPlayer2D" parent="AnimationPlayer"]
+
+[node name="chop2" type="AudioStreamPlayer2D" parent="AnimationPlayer"]
+stream = ExtResource("3_6jgim")
+
+[node name="treefalls" type="AudioStreamPlayer2D" parent="AnimationPlayer"]
+stream = ExtResource("4_d4ybv")
+volume_db = -5.0

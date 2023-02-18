@@ -25,7 +25,7 @@ signal dead
 
 func _ready():
 	characterNode.position=Vector2(-478,-200)
-	GameState.DEBUG_PLS()
+#	GameState.DEBUG_PLS()
 	GameState.stateChanged.connect(_on_gameState_changed)
 	RandomObjectSpawnTimer=Timer.new()
 	RandomObjectSpawnTimer.connect("timeout", triggerRandomObjectSpawnTick)
@@ -92,3 +92,5 @@ func startGame():
 	$Clouds.visible = true
 	$ScrollingClouds.visible = true
 
+func hitTree():
+	$Scrolling/Tree.hitMe()

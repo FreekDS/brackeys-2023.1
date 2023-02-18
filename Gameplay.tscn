@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://nxbmc78oblwt" path="res://InteractingObjects/Player/BoxedMapleSeed.tscn" id="7_7o26x"]
 [ext_resource type="PackedScene" uid="uid://bpqs5c8pkymdr" path="res://UI/dead_screen.tscn" id="7_ydsya"]
 [ext_resource type="PackedScene" uid="uid://bok2xyi22l8aq" path="res://InteractingObjects/Lumberaxe/LumberaxeSpawner.tscn" id="8_cyi0w"]
-[ext_resource type="PackedScene" uid="uid://d23u4v2hvdw2k" path="res://UI/win_screen.tscn" id="8_iw22v"]
+[ext_resource type="PackedScene" path="res://UI/win_screen.tscn" id="8_iw22v"]
 [ext_resource type="PackedScene" uid="uid://cu2r751bje6jd" path="res://Common/victory_manager.tscn" id="12_ib8b5"]
 
 [node name="GAMEPLAY" type="Node2D"]
@@ -87,6 +87,8 @@ offset_bottom = 20.0
 [node name="VictoryManager" parent="." node_paths=PackedStringArray("scrollingObjects", "playerNode") instance=ExtResource("12_ib8b5")]
 scrollingObjects = NodePath("../Scrolling")
 playerNode = NodePath("../MapleSeed")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [connection signal="body_entered" from="Scrolling/Ground" to="." method="_on_ground_body_entered"]
 [connection signal="dead" from="EndScreen/DeadScreen" to="." method="_on_dead_screen_dead"]

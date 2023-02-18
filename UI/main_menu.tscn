@@ -26,6 +26,7 @@ script = ExtResource("1_ptk4b")
 self_modulate = Color(1, 1, 1, 0.509804)
 texture_filter = 1
 material = SubResource("ShaderMaterial_5j0gd")
+layout_mode = 0
 offset_left = -1547.0
 offset_top = -901.0
 offset_right = 1596.0
