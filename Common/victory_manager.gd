@@ -26,9 +26,28 @@ extends Node2D
 @export var scrollingObjects : Scrolling	# Dees is de Node die alle objecten bevat die scrollen ("scrolling" in main)
 @export var playerNode : Player
 
+@export var currentGradient : TextureRect
+@export var nextGradient : TextureRect
+
 @onready var timelapseOverlay = $timelapse_overlay as TimelapseOverlay
 @onready var desiredSeedLocation = $"DesiredSeedLocation (1)"
 @onready var treeAnimations = $AnimationPlayer
+
+@export_range(0.0, 1.0)
+var currentAlpha = 1.0: 
+	set(value):
+		currentAlpha = value
+		currentGradient.modulate.a = value
+	get:
+		currentAlpha
+
+@export_range(0.0, 1.0)
+var nextAlpha = 0.0:
+	set(value):
+		nextAlpha = value
+		nextGradient.modulate.a = value
+	get:
+		nextAlpha
 
 func _ready():
 	if scrollingObjects != null:

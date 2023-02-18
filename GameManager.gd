@@ -1,6 +1,8 @@
 extends Node2D
 
 @export var actualGameScene = preload("res://Gameplay.tscn")
+@export var gradients: Array[Texture]
+
 
 @onready var animations = $AnimationPlayer
 
@@ -8,6 +10,10 @@ var currentIteration = 0
 var currentDifficultyLevel = 0
 var waitForClick = false
 
+@onready
+var currentGradient = gradients[0]
+@onready
+var nextGradient = gradients[0]
 
 
 func _ready():
@@ -21,6 +27,10 @@ func _input(event):
 		mouseClicked.emit()
 
 func restartLevel():
+	
+	currentGradient = nextGradient
+	nextGradient = gradients.pick_random()
+	
 	currentIteration += 1
 	currentDifficultyLevel += 1
 	
@@ -32,6 +42,8 @@ func restartLevel():
 	gameInstance.difficultyLevel = currentDifficultyLevel
 	gameInstance.win.connect(_on_game_ground_reached)
 	gameInstance.dead.connect(_on_game_lost)
+	gameInstance.setCurrentGradient(currentGradient)
+	gameInstance.setNextGradient(nextGradient)
 	treeHitFrame.connect(gameInstance.hitTree)
 	
 	# Start game

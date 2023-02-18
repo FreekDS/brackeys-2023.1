@@ -1,9 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://cihyie8mvt3ey"]
+[gd_scene load_steps=14 format=3 uid="uid://cihyie8mvt3ey"]
 
 [ext_resource type="Script" path="res://GameManager.gd" id="1_iuiwe"]
+[ext_resource type="Texture2D" uid="uid://ds7vi5378vxlv" path="res://BackgroundObjects/Gradients/grad1.png" id="2_lfwqt"]
 [ext_resource type="FontFile" uid="uid://25m1cxomhe6y" path="res://Common/thin_pixel-7.ttf" id="2_yoxb2"]
 [ext_resource type="AudioStream" uid="uid://b0v3v5w4iu3gy" path="res://InteractingObjects/chop.wav" id="3_6jgim"]
+[ext_resource type="Texture2D" uid="uid://drgg3kcfb1bt4" path="res://BackgroundObjects/Gradients/grad2.png" id="3_gfa7i"]
+[ext_resource type="Texture2D" uid="uid://3rqmcra8nfwx" path="res://BackgroundObjects/Gradients/grad3.png" id="4_60vu8"]
 [ext_resource type="AudioStream" uid="uid://dgnl1on87dggv" path="res://SFX/treeeeeeeeee-falliing.mp3" id="4_d4ybv"]
+[ext_resource type="Texture2D" uid="uid://hlovnxa8ylku" path="res://BackgroundObjects/Gradients/grad4.png" id="5_kgbgw"]
+[ext_resource type="Texture2D" uid="uid://dlako8yq4pgmt" path="res://BackgroundObjects/Gradients/grad5.png" id="6_i2yca"]
 
 [sub_resource type="Animation" id="Animation_j4mpn"]
 length = 0.001
@@ -122,6 +127,7 @@ _data = {
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_iuiwe")
+gradients = Array[Texture]([ExtResource("2_lfwqt"), ExtResource("3_gfa7i"), ExtResource("4_60vu8"), ExtResource("5_kgbgw"), ExtResource("6_i2yca")])
 
 [node name="Fader" type="CanvasLayer" parent="."]
 process_mode = 4

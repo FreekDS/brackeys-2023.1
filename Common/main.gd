@@ -94,3 +94,9 @@ func startGame():
 
 func hitTree():
 	$Scrolling/Tree.hitMe()
+	
+func setNextGradient(texture):
+	$Scrolling/CanvasLayer/NextGradient.texture = texture
+
+func setCurrentGradient(texture):
+	$Scrolling/CanvasLayer/Gradient.texture = texture
