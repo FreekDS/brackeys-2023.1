@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" path="res://UI/win_screen.tscn" id="8_iw22v"]
 [ext_resource type="PackedScene" uid="uid://cu2r751bje6jd" path="res://Common/victory_manager.tscn" id="12_ib8b5"]
 
-[node name="main" type="Node2D"]
+[node name="GAMEPLAY" type="Node2D"]
 script = ExtResource("1_7v3cp")
 
 [node name="Clouds" parent="." instance=ExtResource("2_hgd1f")]
@@ -24,9 +24,10 @@ layer = -1
 [node name="PlayerCam" type="Camera2D" parent="."]
 scale = Vector2(1.3526, 1.43822)
 
-[node name="Scrolling" type="Node2D" parent="."]
+[node name="Scrolling" type="Node2D" parent="." node_paths=PackedStringArray("PlayerScene")]
 script = ExtResource("3_m0q01")
 speed = 50
+PlayerScene = NodePath("../MapleSeed")
 
 [node name="Ground" parent="Scrolling" instance=ExtResource("5_03k3g")]
 z_index = 1
@@ -51,12 +52,14 @@ visible = false
 scale = Vector2(1.01596, 1.02512)
 
 [node name="WinScreen" parent="EndScreen" instance=ExtResource("8_iw22v")]
+visible = false
 offset_left = -1.0
 offset_top = -2.0
 offset_right = 15.0
 offset_bottom = 20.0
 
-[node name="VictoryManager" parent="." node_paths=PackedStringArray("playerNode") instance=ExtResource("12_ib8b5")]
+[node name="VictoryManager" parent="." node_paths=PackedStringArray("scrollingObjects", "playerNode") instance=ExtResource("12_ib8b5")]
+scrollingObjects = NodePath("../Scrolling")
 playerNode = NodePath("../MapleSeed")
 
 [connection signal="body_entered" from="Scrolling/Ground" to="." method="_on_ground_body_entered"]

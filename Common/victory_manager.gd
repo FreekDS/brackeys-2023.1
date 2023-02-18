@@ -23,6 +23,20 @@ extends Node2D
 # Who knows, mijn eerste testen zeiden van ni
 
 @export var scrollingObjects : Node2D	# Dees is de Node die alle objecten bevat die scrollen ("scrolling" in main)
-@export var playerNode : Node2D
+@export var playerNode : Player
 
 @onready var timelapseOverlay = $timelapse_overlay as TimelapseOverlay
+@onready var desiredSeedLocation = $"DesiredSeedLocation (1)"
+
+func _ready():
+	if scrollingObjects != null:
+		scrollingObjects.scrollDistanceDone.connect(_on_scroll_complete)
+
+
+func start():
+	var scrollDistance = desiredSeedLocation.position - playerNode.getSeedPos()
+	scrollingObjects.scrollAlongDistance(scrollDistance)
+
+
+func _on_scroll_complete():
+	print("Flink gedaan :)")

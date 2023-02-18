@@ -9,7 +9,7 @@ script = ExtResource("1_5q4fe")
 [node name="DEBUG" type="Camera2D" parent="."]
 
 [node name="DesiredSeedLocation (1)" type="Marker2D" parent="."]
-position = Vector2(0, 250)
+position = Vector2(0, 220)
 
 [node name="DesiredTreeLocationOnGameStart (3)" type="Marker2D" parent="."]
 position = Vector2(-400, 800)
