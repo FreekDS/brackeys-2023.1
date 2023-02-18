@@ -23,6 +23,7 @@ func _ready():
 func _physics_process(delta):
 	if active:
 		self.position -= Vector2(1.5*delta*speed,delta*speed/1.5)
+		$CanvasLayer.offset -= Vector2(1.5*delta*speed,delta*speed/1.5)
 
 
 func scrollAlongDistance(distanceXY):
@@ -33,6 +34,7 @@ func scrollAlongDistance(distanceXY):
 	tween.set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "position", position + distanceXY, 1)
 	tween.tween_property(PlayerScene, "seedPos", PlayerScene.seedPos + distanceXY, 1)
+	tween.tween_property($CanvasLayer, "offset", $CanvasLayer.offset + distanceXY, 1)
 	tween.finished.connect(func(): scrollDistanceDone.emit())
 	tween.play()
 	

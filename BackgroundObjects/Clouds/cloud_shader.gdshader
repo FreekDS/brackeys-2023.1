@@ -25,7 +25,7 @@ void fragment() {
 	float sample = texture(noise_texture, at).r;
 	vec4 col = vec4(cloudDarkness,cloudDarkness,cloudDarkness,0.0);
 	if(sample > cloudTreshold) {
-		col.a = abs(sample) * 1.0;
+		col.a = abs(sample) * .2;
 	}
 	COLOR = col;
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dlmo4waiexr4b"]
+[gd_scene load_steps=15 format=3 uid="uid://dlmo4waiexr4b"]
 
 [ext_resource type="Script" path="res://Common/main.gd" id="1_7v3cp"]
 [ext_resource type="PackedScene" uid="uid://fd7dcfgy88hs" path="res://InteractingObjects/Bird/BirdSpawner.tscn" id="2_3pf32"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ftoghex7uce0" path="res://BackgroundObjects/Clouds/scrolling_clouds.tscn" id="3_p8hpd"]
 [ext_resource type="PackedScene" uid="uid://cfg6wwlys75aa" path="res://BackgroundObjects/Tree/Tree.tscn" id="4_hrruo"]
 [ext_resource type="PackedScene" uid="uid://da33skjc8gqe4" path="res://InteractingObjects/Ground/Ground.tscn" id="5_03k3g"]
+[ext_resource type="Texture2D" uid="uid://ds7vi5378vxlv" path="res://BackgroundObjects/Gradients/grad1.png" id="5_7w7u1"]
 [ext_resource type="Texture2D" uid="uid://cil3jfny3di5t" path="res://BackgroundObjects/Clouds/cute_wolkjes.png" id="6_h5j44"]
 [ext_resource type="PackedScene" uid="uid://nxbmc78oblwt" path="res://InteractingObjects/Player/BoxedMapleSeed.tscn" id="7_7o26x"]
 [ext_resource type="PackedScene" uid="uid://bpqs5c8pkymdr" path="res://UI/dead_screen.tscn" id="7_ydsya"]
@@ -29,6 +30,18 @@ scale = Vector2(1.3526, 1.43822)
 script = ExtResource("3_m0q01")
 speed = 50
 PlayerScene = NodePath("../MapleSeed")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Scrolling"]
+layer = -2
+
+[node name="Gradient" type="TextureRect" parent="Scrolling/CanvasLayer"]
+z_as_relative = false
+texture_filter = 1
+offset_left = -1673.0
+offset_top = -76.0
+offset_right = 7598.0
+offset_bottom = 1494.0
+texture = ExtResource("5_7w7u1")
 
 [node name="Ground" parent="Scrolling" instance=ExtResource("5_03k3g")]
 z_index = 1
