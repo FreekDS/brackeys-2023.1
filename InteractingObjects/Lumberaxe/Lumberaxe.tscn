@@ -5,15 +5,18 @@
 [ext_resource type="AudioStream" uid="uid://wipr8dd1qxwn" path="res://SFX/den_draaiende_axe.mp3" id="4_t3nb2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_stv25"]
-size = Vector2(40, 120)
+size = Vector2(100, 110)
 
 [node name="Lumberaxe" type="CharacterBody2D"]
 script = ExtResource("1_smxmg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, -55.5)
 shape = SubResource("RectangleShape2D_stv25")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
 texture = ExtResource("2_h6pip")
 
 [node name="SwingSwangSwung" type="AudioStreamPlayer2D" parent="."]
