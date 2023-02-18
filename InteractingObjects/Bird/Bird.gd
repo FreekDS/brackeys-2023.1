@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var targetPos : Vector2 = Vector2.ZERO
 
 @onready var sprite = $BirbPlaceholder
-
+@onready var particle = $Particles/GPUParticles2D
 var isFlying = false
 var isPeaking = false
 var direction: Vector2 = Vector2.ZERO
@@ -19,6 +19,10 @@ signal collide
 const animationMovementAmount = 16
 
 func start():
+	particle.emitting = true
+	direction = (targetPos - sourcePos).normalized()
+	particle.process_material.set("direction", direction * speed)
+	particle.process_material.set("gravity", direction * speed)
 	$AnimationPlayer.play("koppeke")
 
 func _ready():
@@ -30,7 +34,7 @@ func init(pos: Vector2, target: Vector2, atEdge: BirdSpawner.EDGE):
 	self.position = pos
 	self.sourcePos = pos
 	self.targetPos = target
-	rotation_degrees = 0
+	sprite.rotation_degrees = 0
 	# Correction for the animation to let bird be just off screen
 	match self.startsOnEdge:
 		BirdSpawner.EDGE.LEFT:
@@ -40,17 +44,18 @@ func init(pos: Vector2, target: Vector2, atEdge: BirdSpawner.EDGE):
 			sprite.flip_h = false
 			position.x += $BackMarker.position.x
 		BirdSpawner.EDGE.TOP:
-			rotation_degrees = -90
+			sprite.rotation_degrees = -90
 			position.y += $FrontMarker.position.x
 		BirdSpawner.EDGE.BOTTOM:
-			rotation_degrees = 90
+			sprite.rotation_degrees = 90
 			position.y -= $BackMarker.position.x
 
 func fly():
 	direction = (targetPos - sourcePos).normalized()
 	sprite.flip_h = direction.x > 0
-	rotation_degrees = 0
+	sprite.rotation_degrees = 0
 	isFlying = true
+
 #	$kahkaa.play()
 	$Tsjirpke2.play()
 	$DespawnTimer.start()
@@ -93,6 +98,9 @@ func move_pixel_backward():
 
 func showKoppeke():
 #	var p1 = Vector2(sourcePos.position.x, sourcePos.position.y)
+	var direction = Vector3(targetPos.x,targetPos.y,0)
+	particle.process_material.set("direction", direction)
+	#particle.process_material.set("gravity", direction)
 	var p2 = Vector2(targetPos.x, targetPos.y)
 	direction = (targetPos - sourcePos).normalized()
 	sprite.flip_h = direction.x > 0
@@ -106,6 +114,7 @@ func randomizePitch():
 
 func _on_animation_player_animation_finished(_anim_name):
 	sprite.frame = randi_range(0,1)
+	particle.emitting = false
 	fly()
 
 

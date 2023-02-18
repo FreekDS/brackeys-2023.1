@@ -17,5 +17,3 @@ position = Vector2(1089, 585)
 speed = 500.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
-
-[connection signal="collide" from="Bird" to="." method="_on_bird_collide"]
