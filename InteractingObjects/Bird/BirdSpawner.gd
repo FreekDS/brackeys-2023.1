@@ -43,7 +43,7 @@ func vliegVogeltjeVlieg():
 #	print(EDGE.keys()[targetEdge], targetPos)
 
 	# Vogeltje instatieren jaja
-	var b : Bird = BirdScene.instantiate()
+	var b = BirdScene.instantiate()
 	b.speed = 1000
 	b.collide.connect(_on_bird_collide)
 	add_child(b)
