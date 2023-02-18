@@ -61,7 +61,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_ejf1o"]
 resource_name = "hak"
-length = 5.0
+length = 5.2
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
