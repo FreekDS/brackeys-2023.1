@@ -134,12 +134,21 @@ func _on_game_lost(reason: Death.REASON = Death.REASON.UNKNOWN):
 	activeGameInstance.hidePlayer()
 	get_tree().create_timer(3).timeout.connect(
 		func(): 
-			removeGameplay()
-			loseSceneInstance=loseScene.instantiate()
-			loseSceneInstance.setScore(currentIteration)
-			add_child(loseSceneInstance)
-			loseSceneInstance.connect("restart",restartAfterLose)
-			print("Stukske loser"),
+			#Zie hier, de befaamde lambda in nen lambda
+			animations.animation_finished.connect(
+				func(_a): 
+		#			animations.play("fade_out")
+					removeGameplay()
+					loseSceneInstance=loseScene.instantiate()
+					loseSceneInstance.setScore(currentIteration)
+					add_child(loseSceneInstance)
+					loseSceneInstance.connect("restart",restartAfterLose)
+					animations.play("fade_out")
+					print("Stukske loser"),
+				CONNECT_ONE_SHOT
+			)
+			animations.play_backwards("fade_out")
+			,
 		CONNECT_ONE_SHOT
 	)
 	# Als de animaties klaar zijn, dan moogt ge terug naar main menu
