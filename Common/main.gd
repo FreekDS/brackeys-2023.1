@@ -31,6 +31,7 @@ func _ready():
 	RandomObjectSpawnTimer.set_one_shot(false)
 	add_child(RandomObjectSpawnTimer)
 	birdSpawner.connect("collide",lose)
+	lumberaxeSpawner.connect("collide",lose)
 	victoryManager.victoryAnimationsCompleted.connect(
 		func(): win.emit()
 	)

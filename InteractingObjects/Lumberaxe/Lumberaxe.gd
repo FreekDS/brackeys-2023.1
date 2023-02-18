@@ -15,6 +15,7 @@ var t = 0
 var throwing = false
 
 signal throw_completed
+signal collide
 
 # vrij dom om het zo te doen ma het zou wel kunenn werken :)
 func _quadratic_bezier(p0: Vector2, p1: Vector2, p2: Vector2, time: float):
@@ -31,6 +32,7 @@ func _get_viewport_center() -> Vector2:
 	var scale : Vector2 = transform.get_scale()
 	return -transform.origin / scale + get_viewport_rect().size / scale / 2
 	
+	
 func _physics_process(delta):
 	if throwing:
 		t += delta/60 *  throwSpeed
@@ -46,6 +48,10 @@ func _physics_process(delta):
 			$SwingSwangSwung.stop()
 			t = 0
 			emit_signal("throw_completed")
+		var collision = move_and_collide(velocity)
+		if collision and collision.get_collider().is_in_group("Player"):
+			emit_signal("collide")	
+			$CollisionShape2D.disabled = true
 
 func throwAtPlayer(player: Vector2) -> void:
 	playerTargetPosition = player
