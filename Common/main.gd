@@ -64,7 +64,7 @@ func triggerRandomObjectSpawnTick():
 		lumberaxeSpawner.startThrowAtPlayer()
 	
 func _on_win_screen_win():
-	emit_signal("win")
+#	emit_signal("win")
 	gamePlaying = true
 
 func lose():

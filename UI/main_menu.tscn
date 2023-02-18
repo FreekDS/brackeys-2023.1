@@ -166,7 +166,7 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_oautg")
 theme_override_font_sizes/normal_font_size = 120
 bbcode_enabled = true
-text = "[center]Maple[/center]"
+text = "[center]Maple SEEEEEDSH[/center]"
 fit_content = true
 
 [node name="Highscore" type="RichTextLabel" parent="."]

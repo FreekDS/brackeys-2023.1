@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://buajshfctbjsy"]
 
-[ext_resource type="Script" path="res://InteractingObjects/Bird/Bird.gd" id="1_i1c4j"]
+[ext_resource type="Script" path="res://InteractingObjects/Bird/Bird.gd" id="1_eoeys"]
 [ext_resource type="Texture2D" uid="uid://dd77hm5tv8eyb" path="res://InteractingObjects/Bird/birbke.png" id="2_fnnyu"]
 [ext_resource type="AudioStream" uid="uid://dgxt2yakgmdj" path="res://SFX/tsjilpsjsaplsjlap.mp3" id="3_p4i8m"]
 [ext_resource type="AudioStream" uid="uid://mqsaq5wv1qet" path="res://SFX/vogeltjegijzijtgevangenmaarneenhetzaadjeisgevangenhejongengvd.mp3" id="6_knfkd"]
@@ -109,7 +109,7 @@ color = Color(0.952941, 0.00392157, 0.156863, 1)
 
 [node name="Bird" type="CharacterBody2D"]
 collision_layer = 2
-script = ExtResource("1_i1c4j")
+script = ExtResource("1_eoeys")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hcg00")
