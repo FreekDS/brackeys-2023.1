@@ -3,11 +3,13 @@ extends Node2D
 @export var player : Node2D
 
 var nextTargets = []
+
+var active=true
 signal collide
 
-func _input(event):
-	if event.is_action_pressed("ui_accept"):
-		startThrowAtPlayer()
+#func _input(event):
+#	if event.is_action_pressed("ui_accept"):
+#		startThrowAtPlayer()
 
 func startThrowAtPlayer():
 	# Play scream animation
@@ -22,8 +24,10 @@ func playDeadAnimation():
 	$Vleugel.position=movepos
 	$Vleugel.freeze=false
 	$Vleugel.visible=true
-	
+func stop():
+	active=false
 
 func _on_lumberaxe_collide():
-	playDeadAnimation()
-	emit_signal("collide")
+	if active:
+		playDeadAnimation()
+		emit_signal("collide")

@@ -15,7 +15,7 @@ enum EDGE {
 	TOP,
 	BOTTOM
 }
-
+var active=true
 var sourceEdge: EDGE
 var targetEdge: EDGE
 
@@ -50,9 +50,9 @@ func vliegVogeltjeVlieg():
 	b.init(sourcePos, targetPos, sourceEdge)
 	b.start()
 
-func _input(event):
-	if event.is_action_pressed("ui_accept"):
-		vliegVogeltjeVlieg()
+#func _input(event):
+#	if event.is_action_pressed("ui_accept"):
+#		vliegVogeltjeVlieg()
 
 func sampleX(minmaxOffset := Vector2.ZERO) -> float:
 	var maxF = screenOffset.x - minmaxOffset.x
@@ -106,6 +106,9 @@ func pointAlongEdge(edge: EDGE, minmaxOffset := Vector2.ZERO) -> Vector2:
 			pos.y = -screenOffset.y
 			pos.x = sampleX(minmaxOffset)
 	return pos
-
+func stop():
+	active=false
+	
 func _on_bird_collide():
-	emit_signal("collide")
+	if(active):
+		emit_signal("collide")

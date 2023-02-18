@@ -73,6 +73,7 @@ func waitAndStart(game, time=2):
 
 func tree_falling(_a):
 	GameState.change(GameState.STATE.PLAYING)
+	activeGameInstance.startGame()
 	get_tree().create_timer(3).timeout.connect(
 		func(): 
 			$AnimationPlayer/chop2.play()

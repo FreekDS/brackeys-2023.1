@@ -15,7 +15,6 @@ var RandomObjectSpawnTimer = null
 var rng = RandomNumberGenerator.new()
 
 #This variable gets modified by the root node in main.tscn
-var difficulty = 100
 
 var gamePlaying = false
 
@@ -52,15 +51,41 @@ func _on_ground_body_entered(body):
 		$ScrollingClouds.setScrollSpeed(0)
 		characterNode.stopGame()
 		$VictoryManager.start()
+		
+		$BirdSpawner.stop()
+		$LumberaxeSpawner.stop()
 #		emit_signal("win")
 #		winlmaoScreen.visible=true
 #		winlmaoScreen.play()
 		
 func triggerRandomObjectSpawnTick():
+#	print("trigger")
+	#Blijkt dat ge niet wilt dat axe en bird hetzelfde random nummer gebruikt, want dan komen ze alt tegelijk
 	rng.randomize()
-	var number = rng.randi_range(1,10)
-	if(0 <= difficulty) and gamePlaying:
-#		birdSpawner.vliegVogeltjeVlieg()
+	var numberBird = rng.randi_range(1,100)
+	rng.randomize()
+	var numberAxe = rng.randi_range(1,100)
+	
+	#Level  is birds only (at increased rate), level 2 is axe only (at increased rate), from then it is both at gradually increasing ods
+	var birdChance=0
+	if difficultyLevel==1:
+		birdChance=10
+	if difficultyLevel>2:
+		birdChance=5+(difficultyLevel-3)*5
+		
+		
+	var axeChance=0
+	if difficultyLevel==2:
+		axeChance=10
+	if difficultyLevel>2:
+		axeChance=5+(difficultyLevel-3)*5
+		
+	print("b"+str(birdChance))
+	print("a"+str(axeChance))
+	if numberBird<birdChance and gamePlaying:
+		birdSpawner.vliegVogeltjeVlieg()
+	##Only do axes from level 2
+	if numberAxe<axeChance and gamePlaying:	
 		lumberaxeSpawner.startThrowAtPlayer()
 	
 func _on_win_screen_win():
@@ -86,9 +111,9 @@ func stopGame():
 
 func startGame():
 	gamePlaying = true
-	RandomObjectSpawnTimer.start(5)
-	$Clouds.visible = true
-	$ScrollingClods.visible = true
+	RandomObjectSpawnTimer.start(1)
+#	$Clouds.visible = true
+#	$ScrollingClods.visible = true
 	
 #used to hide the player node on death (where another animation will be played)
 func hidePlayer():
