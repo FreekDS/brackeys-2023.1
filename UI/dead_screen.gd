@@ -1,11 +1,10 @@
 extends Control
 
-signal dead
-
-func play():
-	visible = true
-	$AudioStreamPlayer.play()
+signal restart
 
 
 func _on_button_pressed():
-	emit_signal("dead")
+	emit_signal("restart")
+
+func setScore(score:int):
+	$Text/Score.text=str(score)

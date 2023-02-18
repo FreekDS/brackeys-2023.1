@@ -2,7 +2,6 @@ class_name GamePlay
 extends Node2D
 
 @onready var characterNode=$MapleSeed/MapleSeed
-@onready var dedlmaoScreen= $EndScreen/DeadScreen
 @onready var winlmaoScreen= $EndScreen/WinScreen
 @onready var birdSpawner= $BirdSpawner
 @onready var lumberaxeSpawner = $LumberaxeSpawner
@@ -71,8 +70,6 @@ func lose():
 	gamePlaying = false
 	$Scrolling.stopGame()
 	characterNode.stopGame()
-	dedlmaoScreen.visible=true
-	dedlmaoScreen.play()
 	emit_signal("dead")
 
 

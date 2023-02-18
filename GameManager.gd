@@ -1,7 +1,9 @@
 extends Node2D
 
 @export var actualGameScene = preload("res://Gameplay.tscn")
+@export var startScene = preload("res://Gameplay.tscn")
 @export var gradients: Array[Texture]
+@export var loseScene= preload("res://UI/dead_screen.tscn")
 
 
 @onready var animations = $AnimationPlayer
@@ -15,9 +17,12 @@ var currentGradient = gradients[0]
 @onready
 var nextGradient = gradients[0]
 
+var loseSceneInstance=null
+
 
 func _ready():
 	restartLevel()
+	_on_game_lost()
 
 signal mouseClicked
 signal treeHitFrame
@@ -113,6 +118,14 @@ func restartGracefully():
 	)
 	animations.play_backwards("fade_out")
 
+func restartAfterLose():
+	#Maybe reset the entire game in this function isntead of soft reseting like in other wins?
+	currentIteration = 0
+	currentDifficultyLevel = 0
+	remove_child(loseSceneInstance)
+	loseSceneInstance=null
+	restartLevel()
+
 func _on_game_lost(reason: Death.REASON = Death.REASON.UNKNOWN):
 	GameState.change(GameState.STATE.STOPPED)
 	
@@ -120,6 +133,10 @@ func _on_game_lost(reason: Death.REASON = Death.REASON.UNKNOWN):
 	
 	# Als de animaties klaar zijn, dan moogt ge terug naar main menu
 	removeGameplay()
+	loseSceneInstance=loseScene.instantiate()
+	loseSceneInstance.setScore(currentIteration)
+	add_child(loseSceneInstance)
+	loseSceneInstance.connect("restart",restartAfterLose)
 	print("Stukske loser")
 	
 func hitTree():

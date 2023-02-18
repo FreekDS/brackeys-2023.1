@@ -1,12 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://bpqs5c8pkymdr"]
+[gd_scene load_steps=17 format=3 uid="uid://bpqs5c8pkymdr"]
 
 [ext_resource type="Script" path="res://UI/dead_screen.gd" id="1_j1mwc"]
-[ext_resource type="Texture2D" uid="uid://deux0xyp5y054" path="res://UI/dead lmao.jpg" id="1_ufnk0"]
-[ext_resource type="AudioStream" uid="uid://cdc230nkswpiw" path="res://UI/dedlmao.mp3" id="3_75tpx"]
 [ext_resource type="Texture2D" uid="uid://dxopbjd0ltrwb" path="res://UI/Button/Button.png" id="4_1rui0"]
 [ext_resource type="Texture2D" uid="uid://25p4lwvqpybu" path="res://UI/Button/PlayButton.png" id="4_3q46j"]
 [ext_resource type="Texture2D" uid="uid://cangrqkubxjdn" path="res://UI/Button/ButtonHover.png" id="4_715rl"]
 [ext_resource type="Texture2D" uid="uid://cmapbgyggvw6a" path="res://UI/Button/ButtonPressed.png" id="6_7rsr6"]
+[ext_resource type="Texture2D" uid="uid://y06a32gi1d3a" path="res://InteractingObjects/Ground/soil.png" id="7_m70qx"]
+[ext_resource type="Texture2D" uid="uid://bcp2mfn2f3maw" path="res://InteractingObjects/Ground/soil_notop.png" id="8_dpoip"]
+[ext_resource type="Texture2D" uid="uid://bwsuoreqsv7md" path="res://BackgroundObjects/Tree/tree_trunk.png" id="9_7uhpq"]
+[ext_resource type="Texture2D" uid="uid://hlovnxa8ylku" path="res://BackgroundObjects/Gradients/grad4.png" id="10_xsuva"]
+[ext_resource type="Texture2D" uid="uid://dlako8yq4pgmt" path="res://BackgroundObjects/Gradients/grad5.png" id="11_15ddx"]
+[ext_resource type="Texture2D" uid="uid://cil3jfny3di5t" path="res://BackgroundObjects/Clouds/cute_wolkjes.png" id="13_esakb"]
+[ext_resource type="FontFile" uid="uid://25m1cxomhe6y" path="res://Common/thin_pixel-7.ttf" id="14_epiwi"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i1b4x"]
 texture = ExtResource("4_715rl")
@@ -33,46 +38,174 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_j1mwc")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
+[node name="soil top" type="TextureRect" parent="."]
+modulate = Color(0.690196, 0.466667, 0.0352941, 1)
+texture_filter = 1
+layout_mode = 0
+offset_left = -3957.0
+offset_top = 467.0
+offset_right = 46.0
+offset_bottom = 499.0
+scale = Vector2(3, 3)
+texture = ExtResource("7_m70qx")
+stretch_mode = 1
+
+[node name="soil bot" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = -4000.0
+offset_top = 536.0
+offset_right = 3.0
+offset_bottom = 1023.0
+scale = Vector2(3, 3)
+texture = ExtResource("8_dpoip")
+stretch_mode = 1
+
+[node name="gekapt" type="Node2D" parent="."]
+
+[node name="TreeTrunk" type="Sprite2D" parent="gekapt"]
+texture_filter = 1
+position = Vector2(94, 464)
+scale = Vector2(3, 3)
+texture = ExtResource("9_7uhpq")
+
+[node name="TreeTrunk2" type="Sprite2D" parent="gekapt"]
+texture_filter = 1
+position = Vector2(247, 476)
+scale = Vector2(3, 3)
+texture = ExtResource("9_7uhpq")
+
+[node name="TreeTrunk3" type="Sprite2D" parent="gekapt"]
+texture_filter = 1
+position = Vector2(391, 463)
+scale = Vector2(3, 3)
+texture = ExtResource("9_7uhpq")
+
+[node name="TreeTrunk4" type="Sprite2D" parent="gekapt"]
+texture_filter = 1
+position = Vector2(494, 468)
+scale = Vector2(3, 3)
+texture = ExtResource("9_7uhpq")
+
+[node name="TreeTrunk5" type="Sprite2D" parent="gekapt"]
+texture_filter = 1
+position = Vector2(661, 462)
+scale = Vector2(3, 3)
+texture = ExtResource("9_7uhpq")
+
+[node name="TreeTrunk6" type="Sprite2D" parent="gekapt"]
+texture_filter = 1
+position = Vector2(979, 466)
+scale = Vector2(3, 3)
+texture = ExtResource("9_7uhpq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="NextGradient" type="TextureRect" parent="CanvasLayer"]
+z_as_relative = false
+texture_filter = 1
+offset_left = -1673.0
+offset_top = -76.0
+offset_right = 7598.0
+offset_bottom = 1494.0
+texture = ExtResource("10_xsuva")
+
+[node name="Gradient" type="TextureRect" parent="CanvasLayer"]
+z_as_relative = false
+texture_filter = 1
+offset_left = -1673.0
+offset_top = -76.0
+offset_right = 7598.0
+offset_bottom = 1494.0
+texture = ExtResource("11_15ddx")
+
+[node name="Wolkjes" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.545098)
+texture_filter = 1
+layout_mode = 0
+offset_left = -1256.0
+offset_top = -2163.0
+offset_right = 1887.0
+offset_bottom = -1351.0
+scale = Vector2(3, 3)
+texture = ExtResource("13_esakb")
+stretch_mode = 1
+
+[node name="Text" type="CanvasLayer" parent="."]
+
+[node name="Score" type="RichTextLabel" parent="Text"]
+custom_minimum_size = Vector2(200, 0)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
+offset_left = -294.0
+offset_top = -544.0
+offset_right = 305.0
+offset_bottom = -438.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_fonts/normal_font = ExtResource("14_epiwi")
+theme_override_font_sizes/normal_font_size = 100
+text = "0 "
+scroll_active = false
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_ufnk0")
+[node name="ScorePretext" type="RichTextLabel" parent="Text"]
+custom_minimum_size = Vector2(200, 0)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -848.0
+offset_top = -548.0
+offset_right = -249.0
+offset_bottom = -442.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_fonts/normal_font = ExtResource("14_epiwi")
+theme_override_font_sizes/normal_font_size = 100
+text = "You got to generation: "
+scroll_active = false
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_75tpx")
+[node name="GameOver" type="RichTextLabel" parent="Text"]
+custom_minimum_size = Vector2(200, 0)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -742.0
+offset_top = -648.0
+offset_right = -338.0
+offset_bottom = -492.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_fonts/normal_font = ExtResource("14_epiwi")
+theme_override_font_sizes/normal_font_size = 150
+text = "Game Over"
+scroll_active = false
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 2
+[node name="NodeThatMakesButtonNotDissapear" type="Node2D" parent="."]
+
+[node name="Button" type="Button" parent="NodeThatMakesButtonNotDissapear"]
+anchors_preset = -1
 anchor_left = 0.501
 anchor_top = 0.856
 anchor_right = 0.501
 anchor_bottom = 0.856
-offset_left = -210.152
-offset_top = -23.688
-offset_right = 210.848
-offset_bottom = 23.312
+offset_left = 388.0
+offset_top = 271.0
+offset_right = 809.0
+offset_bottom = 318.0
 theme = SubResource("Theme_g3dxo")
-text = "Groeit nog nen boom"
+text = "Restart"
 icon = ExtResource("4_3q46j")
 expand_icon = true
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="NodeThatMakesButtonNotDissapear/Button" to="." method="_on_button_pressed"]
