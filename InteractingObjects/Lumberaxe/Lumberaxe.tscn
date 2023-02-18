@@ -16,7 +16,7 @@ shape = SubResource("RectangleShape2D_stv25")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 texture = ExtResource("2_h6pip")
 
 [node name="SwingSwangSwung" type="AudioStreamPlayer2D" parent="."]

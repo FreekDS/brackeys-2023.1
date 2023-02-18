@@ -8,13 +8,15 @@ extends Node2D
 
 @export var seedPos = Vector2.ZERO : 
 	get:
-		return zaad.position
+		return zaad.position if zaad else Vector2.ZERO
 	set(value):
-		zaad.position = value
+		if zaad:
+			zaad.position = value 
 
 signal buried
 
 func _ready():
+	position = zaad.position
 	GameState.stateChanged.connect(_on_gameState_changed)
 
 func _process(delta):

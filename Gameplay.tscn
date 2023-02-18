@@ -46,7 +46,7 @@ texture = ExtResource("6_h5j44")
 stretch_mode = 1
 
 [node name="Tree" parent="Scrolling" instance=ExtResource("4_hrruo")]
-position = Vector2(-215, 490)
+position = Vector2(-388, -133)
 
 [node name="MapleSeed" parent="." groups=["Player"] instance=ExtResource("7_7o26x")]
 

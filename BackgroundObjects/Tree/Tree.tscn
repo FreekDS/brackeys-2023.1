@@ -1,22 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfg6wwlys75aa"]
+[gd_scene load_steps=3 format=3 uid="uid://cfg6wwlys75aa"]
 
-[ext_resource type="Shader" path="res://Common/pixelate.gdshader" id="1_q2y3o"]
-[ext_resource type="Texture2D" uid="uid://wvoply6hou73" path="res://BackgroundObjects/Tree/boom.png" id="2_eesmn"]
+[ext_resource type="Texture2D" uid="uid://bjr1f7efsibmy" path="res://BackgroundObjects/Tree/branch_pod.png" id="1_ukde4"]
 [ext_resource type="Texture2D" uid="uid://c4ud51vc1ko5m" path="res://BackgroundObjects/Tree/leaf.png" id="3_f38io"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_las12"]
-shader = ExtResource("1_q2y3o")
-shader_parameter/pixelSize = 1
 
 [node name="Tree" type="Node2D"]
 texture_filter = 1
 
-[node name="Texture" type="Node2D" parent="."]
-
 [node name="BoomPlaceholder" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_las12")
-scale = Vector2(3, 3)
-texture = ExtResource("2_eesmn")
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("1_ukde4")
 
 [node name="Partikles" type="Node2D" parent="."]
 
