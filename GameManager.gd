@@ -35,7 +35,7 @@ func restartLevel():
 	animations.animation_finished.connect(
 		func(_a): 
 #			pass,
-			waitAndStart(gameInstance, 5),
+			waitAndStart(gameInstance),
 		CONNECT_ONE_SHOT
 	)
 	animations.play("fade_out")
