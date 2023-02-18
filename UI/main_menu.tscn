@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3ha4qxopxuv0"]
+[gd_scene load_steps=10 format=3 uid="uid://c3ha4qxopxuv0"]
 
 [ext_resource type="Script" path="res://UI/main_menu.gd" id="1_ptk4b"]
 [ext_resource type="PackedScene" uid="uid://da0gy62kqyiky" path="res://BackgroundObjects/Clouds/cloud_background.tscn" id="1_yutlw"]
+[ext_resource type="Shader" path="res://UI/main_menu.gdshader" id="2_5vj1x"]
 [ext_resource type="FontFile" uid="uid://25m1cxomhe6y" path="res://Common/thin_pixel-7.ttf" id="2_oautg"]
+[ext_resource type="Texture2D" uid="uid://cil3jfny3di5t" path="res://BackgroundObjects/Clouds/cute_wolkjes.png" id="3_jmau8"]
+[ext_resource type="Texture2D" uid="uid://wvoply6hou73" path="res://BackgroundObjects/Tree/boom.png" id="4_manc2"]
+[ext_resource type="PackedScene" uid="uid://da33skjc8gqe4" path="res://InteractingObjects/Ground/Ground.tscn" id="4_sdrcb"]
+[ext_resource type="Texture2D" uid="uid://c4ud51vc1ko5m" path="res://BackgroundObjects/Tree/leaf.png" id="6_06v4y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5j0gd"]
+shader = ExtResource("2_5vj1x")
+shader_parameter/modulate = Color(1, 1, 1, 0.509804)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -12,6 +21,73 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ptk4b")
+
+[node name="Wolkjes" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.509804)
+texture_filter = 1
+material = SubResource("ShaderMaterial_5j0gd")
+offset_left = -1547.0
+offset_top = -901.0
+offset_right = 1596.0
+offset_bottom = -89.0
+scale = Vector2(3, 3)
+texture = ExtResource("3_jmau8")
+stretch_mode = 1
+
+[node name="Tree" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(44, 70)
+scale = Vector2(3, 3)
+texture = ExtResource("4_manc2")
+
+[node name="Partikles" type="Node2D" parent="."]
+position = Vector2(443, 437)
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="Partikles"]
+position = Vector2(-145, -217)
+scale = Vector2(7, 7)
+amount = 5
+speed_scale = 0.2
+randomness = 1.0
+lifetime_randomness = 0.32
+local_coords = true
+texture = ExtResource("6_06v4y")
+direction = Vector2(0, 0)
+spread = 90.0
+gravity = Vector2(80, 500)
+initial_velocity_min = 25.0
+initial_velocity_max = 149.04
+
+[node name="CPUParticles2D4" type="CPUParticles2D" parent="Partikles"]
+position = Vector2(0.999969, -366)
+scale = Vector2(7, 7)
+amount = 5
+speed_scale = 0.2
+randomness = 1.0
+lifetime_randomness = 0.32
+local_coords = true
+texture = ExtResource("6_06v4y")
+direction = Vector2(0, 0)
+spread = 90.0
+gravity = Vector2(80, 500)
+initial_velocity_min = 25.0
+initial_velocity_max = 149.04
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="Partikles"]
+position = Vector2(-296, -101)
+rotation = -7.31793e-05
+scale = Vector2(8, 8)
+amount = 5
+speed_scale = 0.2
+randomness = 1.0
+lifetime_randomness = 0.32
+local_coords = true
+texture = ExtResource("6_06v4y")
+direction = Vector2(0, 0)
+spread = 90.0
+gravity = Vector2(80, 500)
+initial_velocity_min = 25.0
+initial_velocity_max = 149.04
 
 [node name="Clouds" parent="." instance=ExtResource("1_yutlw")]
 animated = true
@@ -31,10 +107,10 @@ anchor_left = 0.087
 anchor_top = 0.804
 anchor_right = 0.5
 anchor_bottom = 0.932
-offset_left = -13.224
-offset_top = 0.00799561
-offset_right = 1.0
-offset_bottom = -28.936
+offset_left = 19.776
+offset_top = 9.008
+offset_right = 34.0
+offset_bottom = -19.936
 grow_vertical = 0
 theme_override_constants/separation = 20
 
@@ -50,7 +126,7 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_oautg")
 theme_override_font_sizes/font_size = 45
-text = "Settings"
+text = "Controls"
 
 [node name="CreditsButton" type="Button" parent="PlayMenu/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
@@ -79,18 +155,17 @@ grow_vertical = 2
 
 [node name="Title" type="RichTextLabel" parent="."]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -296.0
-offset_right = 296.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -592.0
 offset_bottom = 120.0
-grow_horizontal = 2
+grow_horizontal = 0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_oautg")
 theme_override_font_sizes/normal_font_size = 120
 bbcode_enabled = true
-text = "[center]Placeholder Title[/center]"
+text = "[center]Maple[/center]"
 fit_content = true
 
 [node name="Highscore" type="RichTextLabel" parent="."]
@@ -100,9 +175,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -180.0
+offset_left = 33.0
 offset_top = -224.0
-offset_right = 532.0
+offset_right = 745.0
 offset_bottom = -151.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -113,6 +188,9 @@ theme_override_font_sizes/normal_font_size = 80
 bbcode_enabled = true
 text = "Highscore: 0"
 scroll_active = false
+
+[node name="Ground" parent="." instance=ExtResource("4_sdrcb")]
+position = Vector2(26, 612)
 
 [connection signal="pressed" from="PlayMenu/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="PlayMenu/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]

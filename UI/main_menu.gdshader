@@ -1,9 +1,11 @@
 shader_type canvas_item;
 
-uniform float circle_size : hint_range(0,1) = 0.5f;
+uniform vec4 modulate : source_color;
 
 void fragment() {
-	if (distance(vec2(.5,.5), UV) < circle_size){
-		COLOR.a = 0.0f;
-	}
+	vec2 uv = UV;
+	uv.x += TIME * .02;
+	vec4 col = texture(TEXTURE, uv);
+	
+	COLOR = col * modulate;
 }
