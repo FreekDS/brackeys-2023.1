@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=3 uid="uid://bpqs5c8pkymdr"]
 
 [ext_resource type="Script" path="res://UI/dead_screen.gd" id="1_8q3jy"]
+[ext_resource type="Texture2D" uid="uid://bpp5dem10swaq" path="res://BackgroundObjects/Tree/stomp.png" id="2_gsb68"]
 [ext_resource type="Texture2D" uid="uid://y06a32gi1d3a" path="res://InteractingObjects/Ground/soil.png" id="7_m70qx"]
 [ext_resource type="Texture2D" uid="uid://bcp2mfn2f3maw" path="res://InteractingObjects/Ground/soil_notop.png" id="8_dpoip"]
 [ext_resource type="Theme" uid="uid://b2d0miyditq0x" path="res://UI/buttons_theme.tres" id="9_7hi50"]
-[ext_resource type="Texture2D" uid="uid://bwsuoreqsv7md" path="res://BackgroundObjects/Tree/tree_trunk.png" id="9_7uhpq"]
 [ext_resource type="Texture2D" uid="uid://hlovnxa8ylku" path="res://BackgroundObjects/Gradients/grad4.png" id="10_xsuva"]
 [ext_resource type="Texture2D" uid="uid://dlako8yq4pgmt" path="res://BackgroundObjects/Gradients/grad5.png" id="11_15ddx"]
 [ext_resource type="Texture2D" uid="uid://cil3jfny3di5t" path="res://BackgroundObjects/Clouds/cute_wolkjes.png" id="13_esakb"]
@@ -57,42 +57,43 @@ grow_vertical = 2
 script = ExtResource("1_8q3jy")
 
 [node name="gekapt" type="Node2D" parent="."]
+position = Vector2(-5, -20)
 
 [node name="TreeTrunk" type="Sprite2D" parent="gekapt"]
 texture_filter = 1
 position = Vector2(94, 464)
 scale = Vector2(3, 3)
-texture = ExtResource("9_7uhpq")
+texture = ExtResource("2_gsb68")
 
 [node name="TreeTrunk2" type="Sprite2D" parent="gekapt"]
 texture_filter = 1
 position = Vector2(247, 476)
 scale = Vector2(3, 3)
-texture = ExtResource("9_7uhpq")
+texture = ExtResource("2_gsb68")
 
 [node name="TreeTrunk3" type="Sprite2D" parent="gekapt"]
 texture_filter = 1
 position = Vector2(391, 463)
 scale = Vector2(3, 3)
-texture = ExtResource("9_7uhpq")
+texture = ExtResource("2_gsb68")
 
 [node name="TreeTrunk4" type="Sprite2D" parent="gekapt"]
 texture_filter = 1
 position = Vector2(494, 468)
 scale = Vector2(3, 3)
-texture = ExtResource("9_7uhpq")
+texture = ExtResource("2_gsb68")
 
 [node name="TreeTrunk5" type="Sprite2D" parent="gekapt"]
 texture_filter = 1
 position = Vector2(661, 462)
 scale = Vector2(3, 3)
-texture = ExtResource("9_7uhpq")
+texture = ExtResource("2_gsb68")
 
 [node name="TreeTrunk6" type="Sprite2D" parent="gekapt"]
 texture_filter = 1
 position = Vector2(979, 466)
 scale = Vector2(3, 3)
-texture = ExtResource("9_7uhpq")
+texture = ExtResource("2_gsb68")
 
 [node name="soil top" type="TextureRect" parent="."]
 modulate = Color(0.690196, 0.466667, 0.0352941, 1)
@@ -209,6 +210,7 @@ scroll_active = false
 
 [node name="Fader" type="CanvasLayer" parent="."]
 process_mode = 4
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="Fader"]
 anchors_preset = 15

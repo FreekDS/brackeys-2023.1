@@ -12,10 +12,18 @@ signal collide
 #		startThrowAtPlayer()
 
 func startThrowAtPlayer():
-	# Play scream animation
-	$Lumberaxe.visible=true
-	$Lumberaxe.throwAtPlayer(player.position)
+	$ExclamationMark.visible = true
+	var exclamationTimer = Timer.new()
+	exclamationTimer.connect("timeout", exclamationMark)
+	exclamationTimer.set_one_shot(true)
+	add_child(exclamationTimer)
+	exclamationTimer.start(2)
 	# On scream end, start throw
+
+func exclamationMark():
+	$ExclamationMark.visible = false
+	$Lumberaxe.visible=true
+	$Lumberaxe.throwAtPlayer(player.seedPos + Vector2(0, randf_range(-100, 100)))
 
 func playDeadAnimation():
 	var movepos=Vector2($Lumberaxe.position.x+100,$Lumberaxe.position.y-150)

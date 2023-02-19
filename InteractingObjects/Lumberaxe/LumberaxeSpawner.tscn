@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bok2xyi22l8aq"]
+[gd_scene load_steps=8 format=3 uid="uid://bok2xyi22l8aq"]
 
 [ext_resource type="PackedScene" uid="uid://mpqlconek5jp" path="res://InteractingObjects/Lumberaxe/Lumberaxe.tscn" id="1_7vln3"]
 [ext_resource type="Script" path="res://InteractingObjects/Lumberaxe/LumberaxeSpawner.gd" id="1_snl3j"]
 [ext_resource type="Texture2D" uid="uid://bpmtdff5biuog" path="res://InteractingObjects/Player/seed_broken_1.png" id="3_lblps"]
 [ext_resource type="Texture2D" uid="uid://cs2ofx30fcrh3" path="res://InteractingObjects/Player/seed_broken_2.png" id="4_j8xk4"]
+[ext_resource type="Texture2D" uid="uid://bysne02ogdyl3" path="res://InteractingObjects/Lumberaxe/exclamation_mark.png" id="5_frjnj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tsxjo"]
 
@@ -15,7 +16,9 @@ player = NodePath("Marker2D")
 
 [node name="Lumberaxe" parent="." node_paths=PackedStringArray("Start", "End") instance=ExtResource("1_7vln3")]
 visible = false
+z_index = 4
 position = Vector2(31, 624)
+collision_layer = 4
 Start = NodePath("../Startposition")
 End = NodePath("../Endposition")
 
@@ -59,5 +62,12 @@ shape = SubResource("CircleShape2D_hswbk")
 disabled = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ExclamationMark" type="Sprite2D" parent="."]
+visible = false
+z_index = 5
+position = Vector2(32, 615)
+scale = Vector2(0.225, 0.225)
+texture = ExtResource("5_frjnj")
 
 [connection signal="collide" from="Lumberaxe" to="." method="_on_lumberaxe_collide"]

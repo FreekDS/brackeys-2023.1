@@ -47,7 +47,7 @@ func init(pos: Vector2, target: Vector2, atEdge: BirdSpawner.EDGE):
 			sprite.flip_h = false
 			position.x += $BackMarker.position.x
 		BirdSpawner.EDGE.TOP:
-			sprite.rotation_degrees = -90
+			sprite.rotation_degrees = 90
 			position.y += $FrontMarker.position.x
 		BirdSpawner.EDGE.BOTTOM:
 			sprite.rotation_degrees = 90

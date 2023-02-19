@@ -17,7 +17,7 @@ func setScore(score:int):
 	$Text/Score.text=str(score)
 	var scoring = Scoring.new()
 	if FileAccess.file_exists("user://save.txt"):
-		var f = FileAccess.open("user://save.txt", FileAccess.WRITE_READ)
+		var f = FileAccess.open("user://save.txt", FileAccess.READ_WRITE)
 		var sc = int(f.get_line())
 		if score > sc:
 			f.store_line(str(score))

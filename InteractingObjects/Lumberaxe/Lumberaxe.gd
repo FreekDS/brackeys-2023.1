@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var throwSpeed = 50;
+@export var throwSpeed = 20;
 
 @export var Start : Marker2D
 @export var End : Marker2D

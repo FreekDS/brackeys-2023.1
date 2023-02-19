@@ -12,7 +12,7 @@ func hitMe():
 	tween.tween_property(self, "position", position + Vector2(randx, randy), .025)
 	tween.tween_property(self, "position", originalPos, .025)
 	tween.play()
-	
-func _input(event):
-	if event.is_action_pressed("ui_accept"):
-		hitMe()
+
+#func _input(event):
+#	if event.is_action_pressed("ui_accept"):
+#		hitMe()

@@ -3,7 +3,7 @@ extends Control
 @export var Game : PackedScene = preload("res://GameManager.tscn")
 
 func _ready():
-	update_highscore(0)
+	update_highscore()
 	$AnimationPlayer.play("fade_out")
 
 func _on_play_button_pressed():
@@ -38,7 +38,7 @@ func update_highscore(score=0):
 		$Highscore.visible = false
 		return
 	$Highscore.visible = true
-	$Highscore.set_text("Highscore: " + str(score) + " generations")
+	$Highscore.set_text("Last Score: " + str(score) + " generations")
 
 
 func _on_back_button_pressed():

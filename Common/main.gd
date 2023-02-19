@@ -13,6 +13,8 @@ extends Node2D
 #Counting the delta would also work, but I prefer this
 var RandomObjectSpawnTimer = null
 var rng = RandomNumberGenerator.new()
+var birdSpawnTimer = null
+var axeSpawnTimer = null
 
 #This variable gets modified by the root node in main.tscn
 
@@ -35,6 +37,18 @@ func _ready():
 		func(): win.emit()
 	)
 	
+	
+	birdSpawnTimer=Timer.new()
+	birdSpawnTimer.connect("timeout", triggerBirdSpawn)
+	birdSpawnTimer.set_one_shot(false)
+	add_child(birdSpawnTimer)
+	
+	axeSpawnTimer=Timer.new()
+	axeSpawnTimer.connect("timeout", triggerAxeSpawn)
+	axeSpawnTimer.set_one_shot(false)
+	add_child(axeSpawnTimer)
+	
+	
 
 func _on_gameState_changed(to: GameState.STATE):
 	match to:
@@ -51,6 +65,9 @@ func _on_ground_body_entered(body):
 		$ScrollingClouds.setScrollSpeed(0)
 		characterNode.stopGame()
 		$VictoryManager.start()
+		
+		birdSpawnTimer.stop()
+		axeSpawnTimer.stop()
 		
 		$BirdSpawner.stop()
 		$LumberaxeSpawner.stop()
@@ -85,7 +102,22 @@ func triggerRandomObjectSpawnTick():
 	##Only do axes from level 2
 	if numberAxe<axeChance and gamePlaying:	
 		lumberaxeSpawner.startThrowAtPlayer()
+
+
+func triggerBirdSpawn():
+	rng.randomize()
+	var dupplicate = rng.randi_range(0,100)
+	var count=1
+	if dupplicate < difficultyLevel*3:
+		rng.randomize()
+		count = rng.randi_range(1,3)
+		
+	for i in range(0, count):
+		birdSpawner.vliegVogeltjeVlieg()
 	
+func triggerAxeSpawn():
+	lumberaxeSpawner.startThrowAtPlayer()
+
 func _on_win_screen_win():
 #	emit_signal("win")
 	gamePlaying = true
@@ -109,7 +141,11 @@ func stopGame():
 
 func startGame():
 	gamePlaying = true
-	RandomObjectSpawnTimer.start(1)
+	#RandomObjectSpawnTimer.start(1)
+	print("restart?")
+	birdSpawnTimer.start(30/(3+difficultyLevel))
+	if difficultyLevel >= 3:
+		axeSpawnTimer.start(40/(2+difficultyLevel))
 #	$Clouds.visible = true
 #	$ScrollingClods.visible = true
 	
