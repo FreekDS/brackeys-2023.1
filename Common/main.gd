@@ -80,7 +80,7 @@ func triggerRandomObjectSpawnTick():
 	if difficultyLevel>2:
 		axeChance=5+((difficultyLevel-3)*5)
 		
-	if numberBird<birdChance and gamePlaying:
+	if numberBird>birdChance and gamePlaying:
 		birdSpawner.vliegVogeltjeVlieg()
 	##Only do axes from level 2
 	if numberAxe<axeChance and gamePlaying:	

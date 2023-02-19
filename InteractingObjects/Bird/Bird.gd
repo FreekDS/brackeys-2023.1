@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var targetPos : Vector2 = Vector2.ZERO
 
 @onready var sprite = $BirbPlaceholder
-@onready var particle = $Particles/GPUParticles2D
+@onready var particle = $Particles/CPUParticles2D
 var isFlying = false
 var isPeaking = false
 var direction: Vector2 = Vector2.ZERO
@@ -21,8 +21,8 @@ const animationMovementAmount = 16
 func start():
 	particle.emitting = true
 	direction = (targetPos - sourcePos).normalized()
-	particle.process_material.set("direction", direction * speed)
-	particle.process_material.set("gravity", direction * speed)
+	particle.direction= direction * speed
+	particle.gravity=direction * speed
 	$AnimationPlayer.play("koppeke")
 
 func _ready():
@@ -107,7 +107,7 @@ func move_pixel_backward():
 func showKoppeke():
 #	var p1 = Vector2(sourcePos.position.x, sourcePos.position.y)
 	var direction = Vector3(targetPos.x,targetPos.y,0)
-	particle.process_material.set("direction", direction)
+	particle.direction= direction
 	#particle.process_material.set("gravity", direction)
 	var p2 = Vector2(targetPos.x, targetPos.y)
 	direction = (targetPos - sourcePos).normalized()
