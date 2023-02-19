@@ -1,7 +1,6 @@
 extends Node2D
 
 @export var actualGameScene = preload("res://Gameplay.tscn")
-@export var startScene = preload("res://Gameplay.tscn")
 @export var gradients: Array[Texture]
 @export var loseScene= preload("res://UI/dead_screen.tscn")
 
@@ -139,12 +138,12 @@ func _on_game_lost(reason: Death.REASON = Death.REASON.UNKNOWN):
 			animations.animation_finished.connect(
 				func(_a): 
 		#			animations.play("fade_out")
-					removeGameplay()
 					loseSceneInstance=loseScene.instantiate()
 					loseSceneInstance.setScore(currentIteration)
 					add_child(loseSceneInstance)
 					loseSceneInstance.connect("restart",restartAfterLose)
 					animations.play("fade_out")
+					get_tree().create_timer(.05).timeout.connect(removeGameplay)
 					print("Stukske loser"),
 				CONNECT_ONE_SHOT
 			)

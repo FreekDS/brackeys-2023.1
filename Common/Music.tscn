@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://gbt1y41m5hyx"]
+
+[ext_resource type="AudioStream" uid="uid://dmepm60bufwht" path="res://SFX/Maple2song.mp3" id="1_wuann"]
+
+[node name="Music" type="Node"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_wuann")
+volume_db = 5.0
+autoplay = true
