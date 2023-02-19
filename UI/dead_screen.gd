@@ -15,8 +15,16 @@ func _on_button_pressed():
 
 func setScore(score:int):
 	$Text/Score.text=str(score)
-
-
+	var scoring = Scoring.new()
+	if FileAccess.file_exists("user://save.txt"):
+		var f = FileAccess.open("user://save.txt", FileAccess.WRITE_READ)
+		var sc = int(f.get_line())
+		if score > sc:
+			f.store_line(str(score))
+	else:
+		var f = FileAccess.open("user://save.txt", FileAccess.WRITE)
+		f.store_line(str(score))
+		
 func _on_button_menu_pressed():
 	$AnimationPlayer.animation_finished.connect(
 		func(_a): 

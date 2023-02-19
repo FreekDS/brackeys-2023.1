@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Brackeys 2023-1"
-run/main_scene="res://GameManager.tscn"
+config/name="Graceful Descend"
+run/main_scene="res://UI/main_menu.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 

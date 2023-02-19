@@ -22,6 +22,12 @@ func _on_credits_button_pressed():
 	print("Credits")
 	
 func update_highscore(score=0):
+	if FileAccess.file_exists("user://save.txt"):
+		var f = FileAccess.open("user://save.txt", FileAccess.READ)
+		score = int(f.get_line())
+	else:
+		$Highscore.visible = false
+		return
 	if score == 0:
 		$Highscore.visible = false
 		return
